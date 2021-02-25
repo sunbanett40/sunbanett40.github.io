@@ -11,14 +11,14 @@ During a pandemic with an ever shrinking variety of social interactions, a space
 
 ### What it does
 Comm's Cafe provides an online space that allows users to meet and join conversations in an authentic way to real world contact. The coffee shop has tables of varying sizes that can accommodate two, four or six users. This emulates a real café with the limited space.
-<img src="/images/Screenshot 2021-02-14 130802.png" alt="Placeholder Text" width="4160" height="3120">
+<img src="/images/Screenshot 2021-02-14 130802.png" alt="Placeholder Text" style="width: 100%; height: 100%">
 
 ### How we built it
 The Comm's Cafe's player lobby was built in Unity game engine with free (and pre-purchased) low poly assets. This provided assets were combined and arranged to create a standard coffee shop with an adjoining home theatre.
-<img src="/images/Screenshot 2021-02-14 130754.png" alt="Placeholder Text" width="2080" height="1560"><img src="/images/Screenshot 2021-02-14 125806.png" alt="Placeholder Text" width="2080" height="1560">
+<img src="/images/Screenshot 2021-02-14 130754.png" alt="Placeholder Text" style="width: 50%; height: 50%"><img src="/images/Screenshot 2021-02-14 125806.png" alt="Placeholder Text" style="width: 50%; height: 50%">
 
 The networking was built with mirror that uses a KCP connection over the network, to allow voice and text communications on the coffee shop tables. To implement the home theatre YouTube DL was used. YouTube DL pulls the raw URL of YouTube video and uses that to display it on a render texture in the game space.
-<img src="/images/unknown.png" alt="Placeholder Text" width="4160" height="3120">
+<img src="/images/unknown.png" alt="Placeholder Text" style="width: 100%; height: 100%">
 
 ### Challenges we ran into
 We experienced issues implementing the network syncing. We struggled to sync the player models in the game space without experiencing large amounts of lag. RPC was used to broadcast between clients overcoming the networking issues faces.
