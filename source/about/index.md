@@ -6,11 +6,9 @@ date: 2021-02-25 19:44:51
 ### Why I Love Electronics
 I have always had a deep desire to understand how the world around me works, as a young child I would frequently ask my parents why, until they ran out of answers to give. My fascination with electronics manifested initially as dismantling household electrical appliances (much to my mother’s dismay), in the attempt to understand how they works. 
 
-Once I had matured slightly (but not before I had finished disassembling the house), I shifted my interest to building things. 
+Once I had matured slightly (but not before I had finished disassembling the house), my interest shifted to building things. I find it extremely rewarding to go through different processes to make something, and by the end have something that you can be proud of. I derive a great sense of accomplishment from completing a build, for this reason I enjoy modelling so much.
 
-System.
-Level of abstraction.
-Making something.
+To me electronics is the perfect combination of learning and making. Electronics is a broad and expanding field, meaning there is always more that I can learn and explore, even in areas I already have a good base of knowledge in. However, the real appeal of this to me is the fact that all the information and research surrounding electronics is applicable and useable. It has been extremely rewarding and motivating to me that whilst I have been able to learn and expand my knowledge, I am able to reinforce this by implement the system or device I have just learnt about.
 
 ### Education
 I have always had a technical mind and from an early age had an intense fascination with technology. At GCSE, I took a range of technical subjects including Physics, Electronic Products, and Resistant Materials.
@@ -27,5 +25,3 @@ Scouting has been incredibly important to me for a long time; it has been instru
 For a long time I have been making scale models. This first started with making scenery for a scale railway I was helping my grandfather build. Since then, I have worked on scale aircraft, scale armour, and wargaming models. Recently, I have been working on Lord of the Rings models, such as this Tom Bombadil (which I really am quite proud of). In the past I have worked on a range of historical and sci-fi based models.
 
 I have a keen interest in 3D modelling and 3D printing. I first encountered 3D printing at an exhibition at the National Science Museum. During my technology based GCSEs I used 3D printing to prototype my coursework projects. Then using my student license for Solidworks, I have continued to use and develop my design skills. My designs have been driven by a desire to solve everyday problems, such as creating a buckle for a broken bag, storage tidies and casings for electrical projects.
-
-### Aspirations
