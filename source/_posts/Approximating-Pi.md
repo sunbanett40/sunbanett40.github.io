@@ -1,7 +1,7 @@
 ---
 title: Approximating Pi
 date: 2021-03-14 22:58:12
-tags: -C Programming
+tags: C Programming
 ---
 
 ## HAPPY PI DAY!
@@ -29,13 +29,13 @@ int main()
 
     for(int denominator = 0; ;denominator++)
     {
-        for(int numorator = 0; numorator <= 4*denominator; numorator++)
+        for(int numerator = 0; numorator <= 4*denominator; numerator++)
         {
             double value = (double)numorator/(double)denominator;
             if(aboveThreshold(value) == true)
             {
                 double ifit = fabs((value - M_PI)/M_PI)*100;
-                printf("approximation %i/%i has %f%% error \n", numorator, denominator, ifit);
+                printf("approximation %i/%i has %f%% error \n", numerator, denominator, ifit);
             }
         }
     }
@@ -127,7 +127,7 @@ Approximation       355 /       113 has percentage error 0.000008491367877%
 Approximation     52163 /     16604 has percentage error 0.000008473831161%
 ```
 
-I believe 355/113 is the most accurate approximation that can be easily used. I also had my program search for approximations of e and sqrt(2):
+I believe 355/113 is the most accurate approximation that can be easily used. I also had my program search for approximations of e:
 
 ```
 Approximation         3 /         1 has percentage error 10.363832351432702%
@@ -143,6 +143,9 @@ Approximation       193 /        71 has percentage error 0.001031191673761%
 Approximation       685 /       252 has percentage error 0.001024919667455%
 Approximation       878 /       323 has percentage error 0.000572957112583%
 ```
+
+ and sqrt(2):
+
 ```
 Approximation         1 /         1 has percentage error 29.289321881345252%
 Approximation         3 /         2 has percentage error 6.066017177982121%

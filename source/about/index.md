@@ -6,7 +6,7 @@ date: 2021-02-25 19:44:51
 ### Why I Love Electronics
 I have always had a deep desire to understand how the world around me works, as a young child I would frequently ask my parents why, until they ran out of answers to give. My fascination with electronics manifested initially as dismantling household electrical appliances (much to my mother’s dismay), in the attempt to understand how they works. 
 
-Once I had matured slightly (but not before I had finished disassembling the house), I shifted to 
+Once I had matured slightly (but not before I had finished disassembling the house), I shifted my interest to building things. 
 
 System.
 Level of abstraction.
