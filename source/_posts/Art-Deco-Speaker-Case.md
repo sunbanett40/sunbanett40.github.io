@@ -5,7 +5,7 @@ tags:
     - 3D Design
 ---
 
-<object data="https://butty-builds.me/Art%20Deco%20Speaker.pdf" type="application/pdf" width="750px" height="750px" style="width: 100%; height: 120%">
+<object data="https://butty-builds.me/Art%20Deco%20Speaker.pdf" type="application/pdf" width="800px" height="500px">
 <! -- Waylan & amc @ https://stackoverflow.com/questions/39777166/display-pdf-image-in-markdown -->
     <embed src="https://butty-builds.me/Art%20Deco%20Speaker.pdf">
         <p>This browser does not support PDFs. Please download the PDF to view it: <a href="https://butty-builds.me/Art%20Deco%20Speaker.pdf">Download PDF</a>.</p>
