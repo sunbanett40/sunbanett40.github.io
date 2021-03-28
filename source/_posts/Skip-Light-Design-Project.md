@@ -42,6 +42,7 @@ To provide the output for this system I am going to use a super bright LED. I ha
 ### Circuit Diagram:
 
 <img src="/images/skip_light_circuit_diagram_1.png" alt="Circuit diagram" style="width: 75%; height: 75%">
+
 For the final circuit diagram I combined all of the different subsystems I had built into one design. Once I did this I noticed that I could condense the design down further into one chip instead of two, using nand gate simplification. To keep the hysteresis quality of the schmitt not gate I used a schmitt nand gate instead of a normal one. This meant each subsystem works the same but using the same chip.
 <img src="/images/skip_light_circuit_diagram_2.png" alt="NAND simplification" style="width: 75%; height: 75%">
 

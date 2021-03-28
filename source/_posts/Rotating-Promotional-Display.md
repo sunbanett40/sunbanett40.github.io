@@ -3,6 +3,7 @@ title: Rotating Promotional Display
 date: 2018-05-31 20:46:00
 tags: 
     - Electronics
+    - PCB Design
     - 3D Design
 ---
 ### Introduction
