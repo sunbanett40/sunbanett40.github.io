@@ -177,19 +177,17 @@
       
         <h3 id="Circuit-Diagram"><a href="#Circuit-Diagram" class="headerlink" title="Circuit Diagram"></a>Circuit Diagram</h3><p>As the majority of the ciruit was designed previously in spice, the Eagle schematic for this file was proivided with those sections filled in. The rest of the file was filled in by importing sympol parts, and setting the model and package.<br><img src="/images/RFID18.png" alt="RFID schematic" style="width: 100%; height: 100%"></p>
 <h3 id="PCB-Outline"><a href="#PCB-Outline" class="headerlink" title="PCB Outline"></a>PCB Outline</h3><p>I then created a corresponding board file to the the schematic, and was presented by the following screen.<br><img src="/images/RFID19.png" alt="Board outline" style="width: 100%; height: 100%"></p>
-<p>As we had been provided by the outline of a box that the PCB was to fit in, I modified the shape of the PCB to fit within it. To maximise the space available I made cut outs for the areas where the screw connections of the case will be. I then removed the deadspace under where the buttons will be. Finally, I rounded off the corners so the board is comfortable to pick up and work on once it has been fabricated.<br><img src="/images/RFID20.png" alt="Board outline" style="width: 100%; height: 100%"></p>
-<h3 id="Part-Placement"><a href="#Part-Placement" class="headerlink" title="Part Placement"></a>Part Placement</h3><p>when<br><img src="/images/RFID21.png" alt="Part placement" style="width: 100%; height: 100%"></p>
-<img src="/images/RFID22.png" alt="Part placement" style="width: 100%; height: 100%">
-
-<h3 id="Routing"><a href="#Routing" class="headerlink" title="Routing"></a>Routing</h3><p>when<br><img src="/images/RFID23.png" alt="Routing" style="width: 100%; height: 100%"></p>
-<img src="/images/RFID24.png" alt="Routing" style="width: 100%; height: 100%">
-
-<h3 id="Print-Inductor"><a href="#Print-Inductor" class="headerlink" title="Print Inductor"></a>Print Inductor</h3><p>when<br><img src="/images/RFID25.png" alt="Inductor" style="width: 50%; height: 50%"><img src="/images/RFID26.png" alt="Inductor" style="width: 50%; height: 50%"></p>
-<img src="/images/RFID27.png" alt="Board outline" style="width: 100%; height: 100%">
+<p>As we had been provided by the outline of a box that the PCB was to fit in, I modified the shape of the PCB to fit within it. To maximise the space available I made cut outs for the areas where the screw connections of the case will be. I then removed the deadspace under where the buttons will be. Finally, I rounded off the corners so the board is comfortable to pick up and work on once it has been fabricated.<br><img src="/images/RFID20.png" alt="Board outline" style="width: 75%; height: 75%"></p>
+<h3 id="Part-Placement"><a href="#Part-Placement" class="headerlink" title="Part Placement"></a>Part Placement</h3><p>The first step in designing the board layout was to decide where the major components (i/o and ICs) were going to be placed. With this decided the remaining area would dictate where the passive components and the print inductor were to be placed. To ease in placing the passive components I lined them around the board edge, woughly in the order they were to be connected.<br><img src="/images/RFID21.png" alt="Part placement" style="width: 75%; height: 75%"></p>
+<p>Once I had finalised the position of the major components, the next step was to place the passive components. I did this in such a way as to minimise the routing needed between them. In this design I also took care to seperate the digital and analogue sections of the design.<br><img src="/images/RFID22.png" alt="Part placement" style="width: 75%; height: 75%"></p>
+<h3 id="Routing"><a href="#Routing" class="headerlink" title="Routing"></a>Routing</h3><p>When routing, I started by connecting all the data (signal) lines. These were connected with 10 mil traces and were relatively simple to connect as the traces were usually short owing to the components being placed together in the design.<br><img src="/images/RFID23.png" alt="Routing" style="width: 75%; height: 75%"></p>
+<p>The next step was then to connect the power lines. Not all the power lines needed connecting as the design was going to utilise ground and power planes. However, in connecting seperated sections of the design, such as power connections on the wrong side of the board, vias and 20 mil traces were used.<br><img src="/images/RFID24.png" alt="Routing" style="width: 75%; height: 75%"></p>
+<h3 id="Print-Inductor"><a href="#Print-Inductor" class="headerlink" title="Print Inductor"></a>Print Inductor</h3><p>By this point most of the design had been completed the final party of placement and routing was to create a print inductor<br><img src="/images/RFID25.png" alt="Inductor" style="width: 50%; height: 50%"><img src="/images/RFID26.png" alt="Inductor" style="width: 50%; height: 50%"></p>
+<img src="/images/RFID27.png" alt="Board outline" style="width: 75%; height: 75%">
 
 <h3 id="Ground-amp-Power-Planes"><a href="#Ground-amp-Power-Planes" class="headerlink" title="Ground &amp; Power Planes"></a>Ground &amp; Power Planes</h3><p>when<br><img src="/images/RFID28.png" alt="Power plane" style="width: 50%; height: 50%"><img src="/images/RFID29.png" alt="Power Plane" style="width: 50%; height: 50%"></p>
 <h3 id="Silkscreen"><a href="#Silkscreen" class="headerlink" title="Silkscreen"></a>Silkscreen</h3><p>when<br><img src="/images/RFID30.png" alt="Silkscreen" style="width: 50%; height: 50%"><img src="/images/RFID31.bmp" alt="Silkscreen" style="width: 50%; height: 50%"></p>
-<h3 id="Final-Product"><a href="#Final-Product" class="headerlink" title="Final Product"></a>Final Product</h3><p>Finally, a design rule check was run to<br><img src="/images/RFID33.png" alt="Final DRC" style="width: 100%; height: 100%"></p>
+<h3 id="Final-Product"><a href="#Final-Product" class="headerlink" title="Final Product"></a>Final Product</h3><p>Finally, a design rule check was run to ensure that the design conformed to the fabrication house’s capabilities. Although a few errors were found, these were expected owing to how the print inductor was created. This is now the completed board ready for fabrication, this was finally exported as a gerber file and submitted for production.<br><img src="/images/RFID33.png" alt="Final DRC" style="width: 50%; height: 50%"><img src="/images/RFID34.png" alt="Finished Board" style="width: 50%; height: 50%"></p>
 
       
     </div>
@@ -327,47 +325,6 @@
 
   <li class="meta-text">
   { <a href="/tags/SystemVerilog-HDL/">SystemVerilog HDL</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <p>Unfortunately content is missing :(</p>
-
-      
-    </div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class='ListView'>
-    <header class="title">
-      
-        <h1>
-          <a href="/2021/01/22/Pocket-Calculator-Programming-Project-Part-1/">Pocket Calculator Programming Project - Part 1</a>
-        </h1>
-      
-      <div class='ListMeta'>
-  <time datetime="2021-01-22T21:36:17.000Z" itemprop="datePublished">
-    2021-01-22
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Electronics/">Electronics</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/PCB-Design/">PCB Design</a> }
   </li>
 
 
@@ -543,6 +500,50 @@
 <h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>I was pleased to see that the steps on the output were roughly consistent, more so than the demonstration circuit. Although the noice on the output compared to the demonstration circuit, I would still say that this was an issue that needed addressing. Overall, I was pleased with this circuit, I feel that there is plenty to explore with both ADCs and DACs, these are topics I may come back to in the future.</p>
 <p>Unfortunately, at the time of writing I cannot find the image of the results to my project, I suspect it lost to a disposable USB. </p>
 
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2019/10/24/Fizzbuzz-on-Arduino/">Fizzbuzz on Arduino</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2019-10-24T11:56:00.000Z" itemprop="datePublished">
+    2019-10-24
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Arduino/">Arduino</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Electonics/">Electonics</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Microcontroller/">Microcontroller</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> count = <span class="number">0</span>;                                  <span class="comment">//Defining Variables</span></span><br><span class="line"><span class="keyword">int</span> buttonState = <span class="number">0</span>;                            <span class="comment">//Defining buttonState as low</span></span><br><span class="line"><span class="keyword">int</span> ouMin = <span class="number">3</span>, ouMax = <span class="number">12</span>;                      <span class="comment">//Lowest &amp; highest output pin</span></span><br><span class="line"><span class="keyword">int</span> fizz_val = <span class="number">3</span>, buzz_val = <span class="number">5</span>;                 <span class="comment">//Defining values for fizz &amp; buzz</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> Buzz = <span class="number">11</span>, Fizz = <span class="number">12</span>, buttonPin = <span class="number">13</span>; <span class="comment">//Setting i/o pins</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setup</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// put your setup code here, to run once:</span></span><br><span class="line">    pinMode(buttonPin, INPUT);           <span class="comment">//Set button as input</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = ouMin; i &lt;= ouMax; i++) <span class="comment">//Setting output pins</span></span><br><span class="line">    &#123;</span><br><span class="line">        pinMode(i, OUTPUT);</span><br><span class="line">    &#125;</span><br><span class="line">    Serial.begin(<span class="number">9600</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">loop</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// put your main code here, to run repeatedly:</span></span><br><span class="line">    buttonState = digitalRead(buttonPin); <span class="comment">//Read the state of the button value</span></span><br><span class="line">    <span class="keyword">if</span> (buttonState == HIGH)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//Check if the button is pressed</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = ouMin; i &lt;= ouMax; i++) <span class="comment">//If so reset all output pins to 0</span></span><br><span class="line">        &#123;</span><br><span class="line">            digitalWrite(i, LOW);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//increment count</span></span><br><span class="line">        count++;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//Reset count when it exceeds 100</span></span><br><span class="line">        <span class="keyword">if</span> (count &gt; <span class="number">100</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            count = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Check if value is a multiple of fizz</span></span><br><span class="line">    <span class="keyword">if</span> (count % fizz_val == <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        digitalWrite(Fizz, HIGH);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Check if value is a multiple of buzz</span></span><br><span class="line">    <span class="keyword">if</span> (count % buzz_val == <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        digitalWrite(Buzz, HIGH);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//check if it is neither a multiple of fizz or buzz</span></span><br><span class="line">    <span class="keyword">if</span> (!((count % fizz_val == <span class="number">0</span>) || (count % buzz_val == <span class="number">0</span>)))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> out = count; <span class="comment">//Set local out equal to global count</span></span><br><span class="line">        <span class="keyword">int</span> j;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//convert to binary</span></span><br><span class="line">        <span class="keyword">for</span> (j = <span class="number">6</span>; j &gt;= <span class="number">0</span>; j--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (out &gt;= <span class="built_in">pow</span>(<span class="number">2</span>, j))</span><br><span class="line">            &#123;</span><br><span class="line">                digitalWrite(j + <span class="number">3</span>, HIGH);</span><br><span class="line">                out -= <span class="built_in">pow</span>(<span class="number">2</span>, j);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    delay(<span class="number">200</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 </article>
