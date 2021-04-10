@@ -18,33 +18,33 @@ You own a skip hire company. People keep hitting your skips at night in their ca
 
 ### Subsystem Blocks
 
-<img src="/images/skip_light_block_diagram.png" alt="Block diagram" style="width: 75%; height: 75%">
+<img src="/images/skip_light_block_diagram.png" alt="Block diagram" style="width: 75%; height: 75%" class="center">
 
 #### Subsystem (1):
 I will use a potential divider with a LDR to measure a change in the light level, this will tell the circuit it is dark. I used a potentiometer in the circuit to allow me to dial in the resistance so that the output voltages for light and dark are above and below the switching threshold. Finally the  schmitt not gate is in this system to give exact logic levels with no flickering, this is caused by the gates hysteresis effect.
-<img src="/images/skip_light_subsystem_1.png" alt="Subsystem 1" style="width: 33%; height: 33%">
+<img src="/images/skip_light_subsystem_1.png" alt="Subsystem 1" style="width: 33%; height: 33%" class="center">
 
 #### Subsystem (2):
 I will use a schmitt not gate astable to create a 5Hz pulse for the skip light. The use of a schmitt not gate astable instead of a 555 astable because I was already using a schmitt not gate in my design.
-<img src="/images/skip_light_subsystem_2.png" alt="Subsystem 2" style="width: 33%; height: 33%">
+<img src="/images/skip_light_subsystem_2.png" alt="Subsystem 2" style="width: 33%; height: 33%" class="center">
 
 #### Subsystem (3):
 For this part of the circuit I intend to just use an and gate as this very effectively combines the light sensors logic level and the astable, so that it outputs 5Hz when it is dark.
-<img src="/images/skip_light_subsystem_3.png" alt="Subsystem 3" style="width: 33%; height: 33%">
+<img src="/images/skip_light_subsystem_3.png" alt="Subsystem 3" style="width: 33%; height: 33%" class="center">
 
 #### Subsystem (4):
 To drive the LED I will use a N-channel MOSFET. This will allow me to drive the LED at higher currents than the and gate will be able to output. This is necessary as the LED I intend to use will be a very powerful one, requiring more current. I have decided on a MOSFET instead of a NPN transistor as it will allow me to drive the LED with negligible current from the and gate. In addition the MOSFETs much faster switching speed will help maintain the clear square wave of the astable.
-<img src="/images/skip_light_subsystem_4.png" alt="Subsystem 4" style="width: 33%; height: 33%">
+<img src="/images/skip_light_subsystem_4.png" alt="Subsystem 4" style="width: 33%; height: 33%" class="center">
 
 #### Subsystem (5):
-To provide the output for this system I am going to use a super bright LED. I have calculated the protection resistor needed to be about 910Ω I have tested the two nearest resistor values and found that both will work continuously. I have decided to use the smaller value as <img src="/images/skip_light_subsystem_5.png" alt="Subsystem 5" style="width: 33%; height: 33%">
+To provide the output for this system I am going to use a super bright LED. I have calculated the protection resistor needed to be about 910Ω I have tested the two nearest resistor values and found that both will work continuously. I have decided to use the smaller value as <img src="/images/skip_light_subsystem_5.png" alt="Subsystem 5" style="width: 33%; height: 33%" class="center">
 
 ### Circuit Diagram:
 
-<img src="/images/skip_light_circuit_diagram_1.png" alt="Circuit diagram" style="width: 75%; height: 75%">
+<img src="/images/skip_light_circuit_diagram_1.png" alt="Circuit diagram" style="width: 75%; height: 75%" class="center">
 
 For the final circuit diagram I combined all of the different subsystems I had built into one design. Once I did this I noticed that I could condense the design down further into one chip instead of two, using nand gate simplification. To keep the hysteresis quality of the schmitt not gate I used a schmitt nand gate instead of a normal one. This meant each subsystem works the same but using the same chip.
-<img src="/images/skip_light_circuit_diagram_2.png" alt="NAND simplification" style="width: 75%; height: 75%">
+<img src="/images/skip_light_circuit_diagram_2.png" alt="NAND simplification" style="width: 75%; height: 75%" class="center">
 
 ### Photo of Working circuit:
 Once built I needed to get my circuit working. To get it working, I had to do two things. First I had to find the right resistance for the potentiometre. This was so it outputted above and below the threshold voltage of the schmitt nand gate I used. To do this I used a multimeter and measured the output voltage. I found that a resistance of about 2.5KΩ was a very effective value. Secondly, I found that my LED was always dimly on. I found that the problem was my MOSFET was leaking current. To fix this I replaced the model of my MOSFET.
