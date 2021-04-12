@@ -13,7 +13,7 @@ Inspired by Tom Scott's YouTube Video on the <a href="https://www.youtube.com/wa
 
 ### The Hardware
 As I was planning on using an Arduino for my solution to the Fizzbuzz game I needed to create a circuit to surport it. As an input it had a button, and a low pass filter for debouncing, connected to a digital pin. As an output it had an LED display connected to digital pins in parrallel. The powerrails were poweered from the power and ground pins.
-<img src="/images/Fizzbuzz2.jpg" alt="Arduino board" style="width: 33%; height: 33%" class="center">
+<p style="text-align:center;"><img src="/images/fizzbuzz/Fizzbuzz2.jpg" alt="Arduino board" style="width: 33%; height: 33%">
 
 ### The Program
 In the main loop my program would constantly poll the input pin. Once the button had been pressed it would then increase the count, and loop back to 0 if it reached 100. Then the output would check if the count was a multiple of fizz or buzz and then output the flag. If it was neither then the value would be outputted as a 7 bit binary number. I decided to output it as flags and binary as these would be the most useful way to interact with larger systems if required.
@@ -96,7 +96,7 @@ Overall I was pleased with the results of this project, the program worked and t
 
 If I were to improve the hardware I would use multiplexed seven segment displays so the output could be more easily understand. If I were to improve the program I would improve the scalability of the code so that it could be used for a larger set of values.
 
-<video style="width: 33%; height: 33%" class="center" autoplay muted>
-  <source src="/images/Fizzbuzz.mp4" type="video/mp4">
+<p style="text-align:center;"><video style="width: 33%; height: 33%" autoplay muted>
+  <source src="/images/fizzbuzz/Fizzbuzz.mp4" type="video/mp4">
 This browser does not support the video tag.
 </video>

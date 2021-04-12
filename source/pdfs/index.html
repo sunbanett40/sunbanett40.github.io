@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en-UK">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Butty Builds</title>
+  
+  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+<div class="Shell">
+    <aside class='SideBar'>
+    <section class='avatar' style="background-image: url(/assets/sidebar.png)">
+        <div class='av-pic' style="background-image: url(/assets/profile1.jpg)">
+        </div>
+    </section>
+    <section class='menu'>
+        <div>Butty Builds</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+            <a href="/logbooks/" class="Btn">
+              <li>Logbooks</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+            
+                <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/joseph-butterworth-6a587b207/">
+                    <img src="/assets/linkedin.svg" />
+                </a>
+            
+        
+            
+                <a target="_blank" rel="noopener" href="https://github.com/sunbanett40">
+                    <img src="/assets/github.svg" />
+                </a>
+            
+        
+            
+                <a target="_blank" rel="noopener" href="https://www.thingiverse.com/sunbane/designs">
+                    <img src="/assets/thingiverse.svg" />
+                </a>
+            
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <ul class="Index">
+  
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2021/03/14/Approximating-Pi/">Approximating Pi</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2021-03-14T22:58:12.000Z" itemprop="datePublished">
+    2021-03-14
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/C-Programming/">C Programming</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h2 id="HAPPY-PI-DAY"><a href="#HAPPY-PI-DAY" class="headerlink" title="HAPPY PI DAY!"></a>HAPPY PI DAY!</h2><p>As it’s pi day, and the weekend, I have spent some time thinking about pi (and pie). Being able to calculate pi to ridiculous levels is important, don’t get me wrong, but not always useful. I would argue knowing a good approximation is probably more useful than an accurate value. When you are in need of an accurate value you are likely using a calculator which has it’s own stored value. Therefore, any time you the maths is not important enough to get a calculator is when it’s useful to have a good approximation of pi.</p>
+<p>So far I have used the generally vague expression of “a good approximation”. So maybe I should define that, “a good approximation” is one that finds a balance between memorability (it’s not useful if you can’t remember it) and accuracy. 3 is a very memorable approximation it is short, simple, and the butt of many engineering jokes, but its not the most accurate. Perhaps the quintisential appproximation of pi is 22/7 (I’ve even heard it called the exact value), it’s memorable and accurate enough for napkin maths.</p>
+<p>22/7 is a time tested approximations. However, I wanted a better approximation, so I created a program that would run through every rational number between 0 and 4 and check how accurate they are to pi.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdbool.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> comparison ((double)22/(double)7)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> threshold (fabs((comparison - M_PI)/M_PI)*100)</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">aboveThreshold</span><span class="params">(<span class="keyword">double</span> value)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Threshold is: %f%%&quot;</span>, threshold);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> denominator = <span class="number">0</span>; ;denominator++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> numerator = <span class="number">0</span>; numorator &lt;= <span class="number">4</span>*denominator; numerator++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">double</span> value = (<span class="keyword">double</span>)numorator/(<span class="keyword">double</span>)denominator;</span><br><span class="line">            <span class="keyword">if</span>(aboveThreshold(value) == <span class="literal">true</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">double</span> ifit = <span class="built_in">fabs</span>((value - M_PI)/M_PI)*<span class="number">100</span>;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;approximation %i/%i has %f%% error \n&quot;</span>, numerator, denominator, ifit);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">aboveThreshold</span><span class="params">(<span class="keyword">double</span> value)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">fabs</span>((value - M_PI)/M_PI)*<span class="number">100</span> &lt; threshold)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>I should say that I wrote this code in five minutes, and I know it is not particularly well written. The positive is that it works, it can find increasdingly accurate values. However, there are a few issues:</p>
+<ul>
+<li>There are no comments.</li>
+<li>The #defines are sloppily made. They should be in all caps to distinguish them from variables, the casts look ugly, and calling functions in the define statement is lasy.</li>
+<li>I used float format specifiers instead of doubles in the print statements.</li>
+<li>This method assumes the knowledge that pi is less than 4. Although, not unreasonable it is an avoidable assumption.</li>
+<li>The method to calculate percentage errore is used three times, instead of being a function.</li>
+<li>The aboveThreshold function is used once, and requires the &lt;stdbool.h&gt; header to be included.</li>
+<li><strong>It’s inefficient</strong>, it checks more values than necessary and has no way of narrowing it’s search as it finds more accurate approximations.</li>
+</ul>
+<p>Needless to say I was not overwhelmingly pleased with the program had written. Spending a little bit longer to address the issues I had identified, I revised my program.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TARGET M_PI</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">double</span> approx = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">double</span> approx_error = <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Luc @ https://stackoverflow.com/questions/9748393/how-can-i-get-argv-as-int/38669018</span></span><br><span class="line">    <span class="keyword">int</span> limit = strtol(argv[<span class="number">1</span>], <span class="literal">NULL</span>, <span class="number">10</span>);</span><br><span class="line">    <span class="keyword">int</span> quantity = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//for every denominator check values close to the current approximation</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> den = <span class="number">1</span>;; den++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> num = (approx - approx_error) * den; num &lt;= (approx + approx_error) * den; num++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">double</span> value = (<span class="keyword">double</span>)num / (<span class="keyword">double</span>)den;</span><br><span class="line">            <span class="keyword">double</span> error = <span class="built_in">fabs</span>(((value - TARGET) / TARGET) * <span class="number">100</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">//if the the value is a better approximation replace the current approximation with it</span></span><br><span class="line">            <span class="keyword">if</span> (error &lt; approx_error)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;Approximation %9i / %9i has percentage error %.15lf%%\n&quot;</span>, num, den, error);</span><br><span class="line">                approx = value;</span><br><span class="line">                approx_error = error;</span><br><span class="line">                quantity++;</span><br><span class="line">                <span class="keyword">if</span> (quantity == limit)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>In this program I used the same general method, but made it more efficient by implementing the changes I suggested. For this version I made some additional quality of life changes. I defined a target value instead of using M_PI, M_PI is defined in &lt;math.h&gt; but by defining a target I make the program flexible to look for any irrational number. I also modified it to read in a value, this value is used to limit the number of approximations the program finds.</p>
+<p>My program found some good approximations of pi:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Approximation         3 &#x2F;         1 has percentage error 4.507034144862795%</span><br><span class="line">Approximation        13 &#x2F;         4 has percentage error 3.450713009731973%</span><br><span class="line">Approximation        16 &#x2F;         5 has percentage error 1.859163578813025%</span><br><span class="line">Approximation        19 &#x2F;         6 has percentage error 0.798130624867045%</span><br><span class="line">Approximation        22 &#x2F;         7 has percentage error 0.040249943477070%</span><br><span class="line">Approximation       179 &#x2F;        57 has percentage error 0.039526970353452%</span><br><span class="line">Approximation       201 &#x2F;        64 has percentage error 0.030801370403238%</span><br><span class="line">Approximation       223 &#x2F;        71 has percentage error 0.023796311288284%</span><br><span class="line">Approximation       245 &#x2F;        78 has percentage error 0.018048570476005%</span><br><span class="line">Approximation       267 &#x2F;        85 has percentage error 0.013247516385752%</span><br><span class="line">Approximation       289 &#x2F;        92 has percentage error 0.009177057483145%</span><br><span class="line">Approximation       311 &#x2F;        99 has percentage error 0.005682219031411%</span><br><span class="line">Approximation       333 &#x2F;       106 has percentage error 0.002648963016705%</span><br><span class="line">Approximation       355 &#x2F;       113 has percentage error 0.000008491367877%</span><br><span class="line">Approximation     52163 &#x2F;     16604 has percentage error 0.000008473831161%</span><br></pre></td></tr></table></figure>
+
+<p>I believe 355/113 is the most accurate approximation that can be easily used. I also had my program search for approximations of e:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Approximation         3 &#x2F;         1 has percentage error 10.363832351432702%</span><br><span class="line">Approximation         5 &#x2F;         2 has percentage error 8.030139707139414%</span><br><span class="line">Approximation         8 &#x2F;         3 has percentage error 1.898815687615381%</span><br><span class="line">Approximation        11 &#x2F;         4 has percentage error 1.166846322146644%</span><br><span class="line">Approximation        19 &#x2F;         7 has percentage error 0.147008824894217%</span><br><span class="line">Approximation        49 &#x2F;        18 has percentage error 0.144958985559308%</span><br><span class="line">Approximation        68 &#x2F;        25 has percentage error 0.063207998632324%</span><br><span class="line">Approximation        87 &#x2F;        32 has percentage error 0.017223068485887%</span><br><span class="line">Approximation       106 &#x2F;        39 has percentage error 0.012254450838744%</span><br><span class="line">Approximation       193 &#x2F;        71 has percentage error 0.001031191673761%</span><br><span class="line">Approximation       685 &#x2F;       252 has percentage error 0.001024919667455%</span><br><span class="line">Approximation       878 &#x2F;       323 has percentage error 0.000572957112583%</span><br></pre></td></tr></table></figure>
+
+<p> and sqrt(2):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Approximation         1 &#x2F;         1 has percentage error 29.289321881345252%</span><br><span class="line">Approximation         3 &#x2F;         2 has percentage error 6.066017177982121%</span><br><span class="line">Approximation         4 &#x2F;         3 has percentage error 5.719095841793675%</span><br><span class="line">Approximation         7 &#x2F;         5 has percentage error 1.005050633883360%</span><br><span class="line">Approximation        17 &#x2F;        12 has percentage error 0.173460668094231%</span><br><span class="line">Approximation        24 &#x2F;        17 has percentage error 0.173160303075644%</span><br><span class="line">Approximation        41 &#x2F;        29 has percentage error 0.029730935695016%</span><br><span class="line">Approximation        99 &#x2F;        70 has percentage error 0.005101910668863%</span><br><span class="line">Approximation       140 &#x2F;        99 has percentage error 0.005101650387225%</span><br><span class="line">Approximation       239 &#x2F;       169 has percentage error 0.000875323322583%</span><br><span class="line">Approximation       577 &#x2F;       408 has percentage error 0.000150182509294%</span><br><span class="line">Approximation       816 &#x2F;       577 has percentage error 0.000150182283750%</span><br></pre></td></tr></table></figure>
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2021/03/11/RFID-Sensor-Project-Part-2-PCB-Design/">RFID Sensor Project Part 2 - PCB Design</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2021-03-11T12:14:00.000Z" itemprop="datePublished">
+    2021-03-11
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Electronics/">Electronics</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/PCB-Design/">PCB Design</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h3 id="Circuit-Diagram"><a href="#Circuit-Diagram" class="headerlink" title="Circuit Diagram"></a>Circuit Diagram</h3><p>As the majority of the ciruit was designed previously in spice, the Eagle schematic for this file was proivided with those sections filled in. The rest of the file was filled in by importing sympol parts, and setting the model and package.<br><img src="/images/RFID18.png" alt="RFID schematic" style="width: 100%; height: 100%" class="center"></p>
+<h3 id="PCB-Outline"><a href="#PCB-Outline" class="headerlink" title="PCB Outline"></a>PCB Outline</h3><p>I then created a corresponding board file to the the schematic, and was presented by the following screen.<br><img src="/images/RFID19.png" alt="Board outline" style="width: 75%; height: 75%" class="center"></p>
+<p>As we had been provided by the outline of a box that the PCB was to fit in, I modified the shape of the PCB to fit within it. To maximise the space available I made cut outs for the areas where the screw connections of the case will be. I then removed the deadspace under where the buttons will be. Finally, I rounded off the corners so the board is comfortable to pick up and work on once it has been fabricated.<br><img src="/images/RFID20.png" alt="Board outline" style="width: 75%; height: 75%" class="center"></p>
+<h3 id="Part-Placement"><a href="#Part-Placement" class="headerlink" title="Part Placement"></a>Part Placement</h3><p>The first step in designing the board layout was to decide where the major components (i/o and ICs) were going to be placed. With this decided the remaining area would dictate where the passive components and the print inductor were to be placed. To ease in placing the passive components I lined them around the board edge, woughly in the order they were to be connected.<br><img src="/images/RFID21.png" alt="Part placement" style="width: 75%; height: 75%" class="center"></p>
+<p>Once I had finalised the position of the major components, the next step was to place the passive components. I did this in such a way as to minimise the routing needed between them. In this design I also took care to seperate the digital and analogue sections of the design.<br><img src="/images/RFID22.png" alt="Part placement" style="width: 75%; height: 75%" class="center"></p>
+<h3 id="Routing"><a href="#Routing" class="headerlink" title="Routing"></a>Routing</h3><p>When routing, I started by connecting all the data (signal) lines. These were connected with 10 mil traces and were relatively simple to connect as the traces were usually short owing to the components being placed together in the design.<br><img src="/images/RFID23.png" alt="Routing" style="width: 75%; height: 75%" class="center"></p>
+<p>The next step was then to connect the power lines. Not all the power lines needed connecting as the design was going to utilise ground and power planes. However, in connecting seperated sections of the design, such as power connections on the wrong side of the board, vias and 20 mil traces were used.<br><img src="/images/RFID24.png" alt="Routing" style="width: 75%; height: 75%" class="center"></p>
+<h3 id="Print-Inductor"><a href="#Print-Inductor" class="headerlink" title="Print Inductor"></a>Print Inductor</h3><p>By this point most of the design had been completed the final part of placement and routing was to create a print inductor. To do this I added a new package in the parts library, and used the ULP tool to create a print inductor. I then duplicated the inductor and flipped it to the base plate to create a two layer inductor. I connected these with a via to create a finished package. Once I had the package I asssigned the connection points of my design and it was reasy.<br><img src="/images/RFID25.png" alt="Inductor" style="width: 50%; height: 50%"><img src="/images/RFID26.png" alt="Inductor" style="width: 50%; height: 50%"></p>
+<p>I placed it on the board in the area that I had left for it.<br><img src="/images/RFID27.png" alt="Board outline" style="width: 75%; height: 75%" class="center"></p>
+<h3 id="Ground-amp-Power-Planes"><a href="#Ground-amp-Power-Planes" class="headerlink" title="Ground &amp; Power Planes"></a>Ground &amp; Power Planes</h3><p>Once I had connected the components I then had to create base and power planes. To do this I created a polygon, and selected ratsnest to connect the planes to the rest of the circuit.<br><img src="/images/RFID28.png" alt="Power plane" style="width: 50%; height: 50%"><img src="/images/RFID29.png" alt="Power Plane" style="width: 50%; height: 50%"></p>
+<h3 id="Silkscreen"><a href="#Silkscreen" class="headerlink" title="Silkscreen"></a>Silkscreen</h3><p>At this stage I added my name and information to the board design, tidied the labels for components up, and decided on any images I wanted to include.</p>
+<p>For my silkscreen I wanted a picture of the print inductor, If the board were lacking a case I feel this would be a usefyl feature for the user as it would give a visual idea of where to scan. To do this I went back to the package library and used the ULP tools to export the print as a bitmap. I then imported the bitmap on the board file and laid the image over the top of the Inductor.<br><img src="/images/RFID30.png" alt="Silkscreen" style="width: 50%; height: 50%"><img src="/images/RFID31.bmp" alt="Silkscreen" style="width: 50%; height: 50%"></p>
+<h3 id="Final-Product"><a href="#Final-Product" class="headerlink" title="Final Product"></a>Final Product</h3><p>Finally, a design rule check was run to ensure that the design conformed to the fabrication house’s capabilities. Although a few errors were found, these were expected owing to how the print inductor was created. This is now the completed board ready for fabrication, this was finally exported as a gerber file and submitted for production.<br><img src="/images/RFID33.png" alt="Final DRC" style="width: 50%; height: 50%"><img src="/images/RFID34.png" alt="Finished Board" style="width: 50%; height: 50%"></p>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2021/02/15/Comm-s-Cafe-Highfield-Hack/">Comm&#39;s Cafe - Highfield Hack</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2021-02-15T21:35:21.000Z" itemprop="datePublished">
+    2021-02-15
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/3D-Design/">3D Design</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Hackathon/">Hackathon</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h3 id="Inspiration"><a href="#Inspiration" class="headerlink" title="Inspiration"></a>Inspiration</h3><p>During a pandemic with an ever shrinking variety of social interactions, a space that allows you to safely meet with your friends, spend time and enjoy yourself is well needed. We aim to blend the best of Discord and YouTube to give users an area to kick back and relax as they would when watching a movie or just spending time and talking.</p>
+<h3 id="What-it-does"><a href="#What-it-does" class="headerlink" title="What it does"></a>What it does</h3><p>Comm’s Cafe provides an online space that allows users to meet and join conversations in an authentic way to real world contact. The coffee shop has tables of varying sizes that can accommodate two, four or six users. This emulates a real café with the limited space.<br><img src="/images/Screenshot 2021-02-14 130802.png" alt="Placeholder Text" style="width: 100%; height: 100%"></p>
+<h3 id="How-we-built-it"><a href="#How-we-built-it" class="headerlink" title="How we built it"></a>How we built it</h3><p>The Comm’s Cafe’s player lobby was built in Unity game engine with free (and pre-purchased) low poly assets. This provided assets were combined and arranged to create a standard coffee shop with an adjoining home theatre.<br><img src="/images/Screenshot 2021-02-14 130754.png" alt="Placeholder Text" style="width: 50%; height: 50%"><img src="/images/Screenshot 2021-02-14 125806.png" alt="Placeholder Text" style="width: 50%; height: 50%"></p>
+<p>The networking was built with mirror that uses a KCP connection over the network, to allow voice and text communications on the coffee shop tables. To implement the home theatre YouTube DL was used. YouTube DL pulls the raw URL of YouTube video and uses that to display it on a render texture in the game space.<br><img src="/images/unknown.png" alt="Placeholder Text" style="width: 100%; height: 100%"></p>
+<h3 id="Challenges-we-ran-into"><a href="#Challenges-we-ran-into" class="headerlink" title="Challenges we ran into"></a>Challenges we ran into</h3><p>We experienced issues implementing the network syncing. We struggled to sync the player models in the game space without experiencing large amounts of lag. RPC was used to broadcast between clients overcoming the networking issues faces.</p>
+<p>The greatest challenge that our team faced was time. With only two members in the team, and with pre-existing arrangements to meet, we simply found that we did have enough person-hours to complete all the features that we aspired to include. If we were to do this again we would benefit greatly from an additional team member.</p>
+<h3 id="Accomplishments-that-we’re-proud-of"><a href="#Accomplishments-that-we’re-proud-of" class="headerlink" title="Accomplishments that we’re proud of"></a>Accomplishments that we’re proud of</h3><p>We are proud to have completed a online multiplayer game space experience in 48 hrs. This is an impressive accomplishment even using existing network interfaces, game engine and assets.</p>
+<p>We worked succinctly as a team. Although working on separate features at a time and remotely updating the project using Unity Hub’s syncing feature. We found that neither our personalities nor our project implantation clashed at any point during the project.</p>
+<h3 id="What-we-learned"><a href="#What-we-learned" class="headerlink" title="What we learned"></a>What we learned</h3><p>From this project we have realised the importance of appropriately limiting the scope of a project or exercise. Given a completely free 48hrs this project would have been an achievable scale of project. However, owing to the existing arrangements that we both we bit off more than we could chew with this project.</p>
+<p>Compromises had to be made implementing this project in the time scale. For instance, the implementation of the YouTube DL features had to be vastly simplified to be usable in this project.</p>
+<h3 id="What’s-next-for-the-Comm’s-Cafe"><a href="#What’s-next-for-the-Comm’s-Cafe" class="headerlink" title="What’s next for the Comm’s Cafe"></a>What’s next for the Comm’s Cafe</h3><p>To further elaborate this project we will add minigames to the lobby for waiting players. These minigames will be of an arcade style and may include games like Pong and Snake.</p>
+<h4 id="Original-post-https-devpost-com-software-cafe"><a href="#Original-post-https-devpost-com-software-cafe" class="headerlink" title="Original post: https://devpost.com/software/cafe"></a>Original post: <a target="_blank" rel="noopener" href="https://devpost.com/software/cafe">https://devpost.com/software/cafe</a></h4>
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2021/02/11/RFID-Sensor-Project-Part-1-Analogue-Simulation/">RFID Sensor Project Part 1 - Analogue Simulation</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2021-02-11T11:56:00.000Z" itemprop="datePublished">
+    2021-02-11
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Electronics/">Electronics</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Circuit-Simulation/">Circuit Simulation</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h3 id="LCR-Circuit"><a href="#LCR-Circuit" class="headerlink" title="LCR Circuit"></a>LCR Circuit</h3><p>I first created my LCR circuit using modelsim. This required placing basic components and connecting them with wires.<br><img src="/images/RFID1.png" alt="LCR circuit" style="width: 33%; height: 33%"></p>
+<p>I then performed an AC analysis to determine the 3dB point of this bandpass filter. I found the 3dB to be 195KHz.<br><img src="/images/RFID2.png" alt="AC sweep" style="width: 100%; height: 100%"></p>
+<p>I then changed the source type to a pulse. This allowed me to perform a transient analysis of the band pass filter.<br><img src="/images/RFID3.png" alt="LCR circuit" style="width: 33%; height: 33%"></p>
+<p>I found that the response would fluctuate.<br><img src="/images/RFID4.png" alt="Transient responce" style="width: 50%; height: 50%"><img src="/images/RFID5.png" alt="Transient responce" style="width: 50%; height: 50%"></p>
+<p>I then increased the frequency to 125KHz. I found that the response stabilised and that it rapidly decayed.<br><img src="/images/RFID6.png" alt="Transient responce" style="width: 50%; height: 50%"><img src="/images/RFID7.png" alt="Transient responce" style="width: 50%; height: 50%"></p>
+<p>However, this simulation is not a realistic case for a digital microcontroller pin which has an output impedance of around 50Ω.<br><img src="/images/RFID8.png" alt="LCR Circuit" style="width: 33%; height: 33%"></p>
+<p>Modifying the circuit to include the 50Ω impedance I that the response decayed much more rapidly.<br><img src="/images/RFID9.png" alt="Transient responce" style="width: 50%; height: 50%"><img src="/images/RFID10.png" alt="Transient responce" style="width: 50%; height: 50%"></p>
+<h3 id="AM-Demodulator"><a href="#AM-Demodulator" class="headerlink" title="AM Demodulator"></a>AM Demodulator</h3><p>Creating the AM demodulator I was able to perform both AC and transient analysis on each of the “wires”.<br><img src="/images/RFID11.png" alt="AM Demodulator" style="width: 33%; height: 33%"></p>
+<p>I found that the output removes the information signal from the carrier frequency. It tended towards an attenuation of -50 dB.<br><img src="/images/RFID12.png" alt="AC sweep" style="width: 100%; height: 100%"><br><img src="/images/RFID13.png" alt="Transient responce" style="width: 50%; height: 50%"><img src="/images/RFID14.png" alt="Transient responce" style="width: 50%; height: 50%"></p>
+<h3 id="MFB-Active-Low-Pass-Filter"><a href="#MFB-Active-Low-Pass-Filter" class="headerlink" title="MFB Active Low Pass Filter"></a>MFB Active Low Pass Filter</h3><img src="/images/RFID15.png" alt="MFB filter" style="width: 75%; height: 75%">
+
+<p>The active filter has a gain of 50dB. Its 3dB point is 45KHz.<br><img src="/images/RFID16.png" alt="AC sweep" style="width: 100%; height: 100%"></p>
+<p>The transient response of the circuit shows that there is a small delay between the input and the output response, this is due to the slew rate of the op-amp used.<br><img src="/images/RFID17.png" alt="Transient responce" style="width: 100%; height: 100%"></p>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2021/01/26/SystemVerilog-Microprocessor/">SystemVerilog Microprocessor</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2021-01-26T20:38:43.000Z" itemprop="datePublished">
+    2021-01-26
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Microcontroller/">Microcontroller</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Assembler/">Assembler</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/SystemVerilog-HDL/">SystemVerilog HDL</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <p>Unfortunately content is missing :(</p>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2021/01/19/State-Machines-in-SystemVerilog/">State Machines in SystemVerilog</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2021-01-19T20:38:25.000Z" itemprop="datePublished">
+    2021-01-19
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/State-Machines/">State Machines</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/SystemVerilog-HDL/">SystemVerilog HDL</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <p>Unfortunately content is missing :(</p>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2020/12/01/Traffic-Light-State-Machine/">Traffic Light State Machine</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2020-12-01T20:35:34.000Z" itemprop="datePublished">
+    2020-12-01
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Electronics/">Electronics</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/State-Machines/">State Machines</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <p>Unfortunately content is missing :(</p>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2020/03/11/g-by-Freefall-Timer/">g by Freefall Timer</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2020-03-11T14:20:00.000Z" itemprop="datePublished">
+    2020-03-11
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Electronics/">Electronics</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <p>Unfortunately content is missing :(</p>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2019/12/19/DAC-Design-Project/">DAC Design Project</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2019-12-19T09:42:00.000Z" itemprop="datePublished">
+    2019-12-19
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Electronics/">Electronics</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>As part of my A-Level Electronics we have had to cover a lot of systems with operational amplifiers, at times it has been more like A-Level Op-Amps. One particular circuit that we have had to cover is the digital to analogue converter. I have found the ADC and DAC interesting; these are particularly important circuits as in an increasingly digital age it has only become more important to be able to interact between the digital world of computers and the analogue world around us. </p>
+<p>When learning about the circuit we were shown a demonstration circuit. Although the circuit was sufficient in showing how the process would work, it was not well designed as the steps were inconsistent and there was significant noice. I felt that I could design and construct a better circuit.<br><img src="/images/DAC6.jpg" alt="Demo circuit" style="width: 50%; height: 50%"><img src="/images/DAC12.jpg" alt="Demo results" style="width: 50%; height: 50%"></p>
+<h3 id="Circuit-Design"><a href="#Circuit-Design" class="headerlink" title="Circuit Design"></a>Circuit Design</h3><p>My main concern when designing this circuit was to ensure that there was even spacing between the output steps. To this I ensured that each input was a bigger than the last by a multiple of two. To ensure these steps using the resistors I had to hand, mostly E24 series resistors, I had to use multiple resistors to create a combined resistance. I combined resistors in series as it was easier to calculate, neater to diagram, and easier to breadboard.<br><img src="/images/DAC13.png" alt="Circuit Diagram" style="width: 100%; height: 100%"></p>
+<p>Although not drawn in the circuit diagram, I replicated the 8 bit counter made from a CMOS 4060 and an RC filter. This was to create the binary counter used as the input to the DAC.</p>
+<h3 id="Circuit-Building"><a href="#Circuit-Building" class="headerlink" title="Circuit Building"></a>Circuit Building</h3><p>Building the circut I generally followed the layout of the the demonstration. I made sure to keep my wiring neat and trimmed my resistors to make sure they were not touching.<br><img src="/images/DAC3.jpg" alt="Circuit building" style="width: 50%; height: 50%"><img src="/images/DAC5.jpg" alt="Circuit building" style="width: 50%; height: 50%"><br><img src="/images/DAC9.jpg" alt="Circuit building" style="width: 50%; height: 50%"><img src="/images/DAC11.jpg" alt="Circuit building" style="width: 50%; height: 50%"></p>
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>I was pleased to see that the steps on the output were roughly consistent, more so than the demonstration circuit. Although the noice on the output compared to the demonstration circuit, I would still say that this was an issue that needed addressing. Overall, I was pleased with this circuit, I feel that there is plenty to explore with both ADCs and DACs, these are topics I may come back to in the future.</p>
+<p>Unfortunately, at the time of writing I cannot find the image of the results to my project, I suspect it lost to a disposable USB. </p>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2019/10/24/Fizzbuzz-on-Arduino/">Fizzbuzz on Arduino</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2019-10-24T11:56:00.000Z" itemprop="datePublished">
+    2019-10-24
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Arduino/">Arduino</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Electonics/">Electonics</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Microcontroller/">Microcontroller</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/C-Programming/">C++ Programming</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>Inspired by Tom Scott’s YouTube Video on the <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=QPZ0pIK_wsc&list=PL5ZXG50fTM7oZBZmFhJygA2419Hsg6v8H">FizzBuzz interview question</a> for programmers, which was proposed by the <a target="_blank" rel="noopener" href="https://imranontech.com/2007/01/24/using-fizzbuzz-to-find-developers-who-grok-coding/">‘Imran on Tech’ blog</a>. For this project, I used the Arduino IDE again, using an Arduino Nano and a 10 segment LED display as a physical solution to Imran’s interview question. The project helped to consolidate my programme planning and Arduino coding skills that I learned during my EPQ.</p>
+<h3 id="The-Hardware"><a href="#The-Hardware" class="headerlink" title="The Hardware"></a>The Hardware</h3><p>As I was planning on using an Arduino for my solution to the Fizzbuzz game I needed to create a circuit to surport it. As an input it had a button, and a low pass filter for debouncing, connected to a digital pin. As an output it had an LED display connected to digital pins in parrallel. The powerrails were poweered from the power and ground pins.<br><img src="/images/Fizzbuzz2.jpg" alt="Arduino board" style="width: 33%; height: 33%" class="center"></p>
+<h3 id="The-Program"><a href="#The-Program" class="headerlink" title="The Program"></a>The Program</h3><p>In the main loop my program would constantly poll the input pin. Once the button had been pressed it would then increase the count, and loop back to 0 if it reached 100. Then the output would check if the count was a multiple of fizz or buzz and then output the flag. If it was neither then the value would be outputted as a 7 bit binary number. I decided to output it as flags and binary as these would be the most useful way to interact with larger systems if required.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> count = <span class="number">0</span>;                                  <span class="comment">//Defining Variables</span></span><br><span class="line"><span class="keyword">int</span> buttonState = <span class="number">0</span>;                            <span class="comment">//Defining buttonState as low</span></span><br><span class="line"><span class="keyword">int</span> ouMin = <span class="number">3</span>, ouMax = <span class="number">12</span>;                      <span class="comment">//Lowest &amp; highest output pin</span></span><br><span class="line"><span class="keyword">int</span> fizz_val = <span class="number">3</span>, buzz_val = <span class="number">5</span>;                 <span class="comment">//Defining values for fizz &amp; buzz</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> Buzz = <span class="number">11</span>, Fizz = <span class="number">12</span>, buttonPin = <span class="number">13</span>; <span class="comment">//Setting i/o pins</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setup</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// put your setup code here, to run once:</span></span><br><span class="line">    pinMode(buttonPin, INPUT);           <span class="comment">//Set button as input</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = ouMin; i &lt;= ouMax; i++) <span class="comment">//Setting output pins</span></span><br><span class="line">    &#123;</span><br><span class="line">        pinMode(i, OUTPUT);</span><br><span class="line">    &#125;</span><br><span class="line">    Serial.begin(<span class="number">9600</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">loop</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// put your main code here, to run repeatedly:</span></span><br><span class="line">    buttonState = digitalRead(buttonPin); <span class="comment">//Read the state of the button value</span></span><br><span class="line">    <span class="keyword">if</span> (buttonState == HIGH)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//Check if the button is pressed</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = ouMin; i &lt;= ouMax; i++) <span class="comment">//If so reset all output pins to 0</span></span><br><span class="line">        &#123;</span><br><span class="line">            digitalWrite(i, LOW);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//increment count</span></span><br><span class="line">        count++;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//Reset count when it exceeds 100</span></span><br><span class="line">        <span class="keyword">if</span> (count &gt; <span class="number">100</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            count = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Check if value is a multiple of fizz</span></span><br><span class="line">    <span class="keyword">if</span> (count % fizz_val == <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        digitalWrite(Fizz, HIGH);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Check if value is a multiple of buzz</span></span><br><span class="line">    <span class="keyword">if</span> (count % buzz_val == <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        digitalWrite(Buzz, HIGH);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//check if it is neither a multiple of fizz or buzz</span></span><br><span class="line">    <span class="keyword">if</span> (!((count % fizz_val == <span class="number">0</span>) || (count % buzz_val == <span class="number">0</span>)))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> out = count; <span class="comment">//Set local out equal to global count</span></span><br><span class="line">        <span class="keyword">int</span> j;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//convert to binary</span></span><br><span class="line">        <span class="keyword">for</span> (j = <span class="number">6</span>; j &gt;= <span class="number">0</span>; j--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (out &gt;= <span class="built_in">pow</span>(<span class="number">2</span>, j))</span><br><span class="line">            &#123;</span><br><span class="line">                digitalWrite(j + <span class="number">3</span>, HIGH);</span><br><span class="line">                out -= <span class="built_in">pow</span>(<span class="number">2</span>, j);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    delay(<span class="number">200</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h3><p>Overall I was pleased with the results of this project, the program worked and the hardware was enough to be able to interpret what was happening. </p>
+<p>If I were to improve the hardware I would use multiplexed seven segment displays so the output could be more easily understand. If I were to improve the program I would improve the scalability of the code so that it could be used for a larger set of values.</p>
+<video style="width: 33%; height: 33%" class="center" autoplay muted>
+  <source src="/images/Fizzbuzz.mp4" type="video/mp4">
+This browser does not support the video tag.
+</video>
+      
+    </div>
+</article>
+
+    </li>
+  
+</ul>
+
+  <section id="nav-wrapper">
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">next »</a>
+    </nav>
+  </section>
+
+
+            <footer>
+    <div>© 2021 - Joseph Butterworth </div>
+    <div>
+        <span>
+            Powered by <a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a target="_blank" rel="noopener" href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+
+<script src="/js/pager/dist/singlepager.js"></script>
+
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>
