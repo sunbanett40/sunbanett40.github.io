@@ -5,4 +5,4 @@ tags:
     - Electronics
 ---
 
-Unfortunately content is missing :(
+Unfortunately content is missing :( :(
