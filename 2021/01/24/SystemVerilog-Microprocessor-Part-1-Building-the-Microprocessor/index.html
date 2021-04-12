@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Butty Builds</title>
+  <title>SystemVerilog Microprocessor Part 1 - Building the Microprocessor | Butty Builds</title>
   
   
   <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
@@ -71,55 +71,14 @@
 
     <div class="container">
         <div data-pager-shell>
-            <ul class="Index">
-  
+            <div>
+  <article class='ContentView'>
     <header class='PageTitle'>
-        <h1>{ State Machines }</h1>
+        <h1>SystemVerilog Microprocessor Part 1 - Building the Microprocessor</h1>
     </header>
-  
-  
-    <li>
-      <article class='ListView'>
-    <header class="title">
-      
-        <h1>
-          <a href="/2021/01/24/SystemVerilog-Microprocessor-Part-1-Building-the-Microprocessor/">SystemVerilog Microprocessor Part 1 - Building the Microprocessor</a>
-        </h1>
-      
-      <div class='ListMeta'>
-  <time datetime="2021-01-24T15:02:00.000Z" itemprop="datePublished">
-    2021-01-24
-  </time>
-  
-  | 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/tags/Microcontroller/">Microcontroller</a> }
-  </li>
 
-  <li class="meta-text">
-  { <a href="/tags/Assembler/">Assembler</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/State-Machines/">State Machines</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/SystemVerilog-HDL/">SystemVerilog HDL</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <h3 id="Microprocessor-Architecture"><a href="#Microprocessor-Architecture" class="headerlink" title="Microprocessor Architecture"></a>Microprocessor Architecture</h3><p style="text-align:center;"><img src="/images/sv-microprocessor/IMG_20210123_152930.jpg" alt="CPU Architecture" style="width: 50%; height: 50%">
+    <section>
+      <h3 id="Microprocessor-Architecture"><a href="#Microprocessor-Architecture" class="headerlink" title="Microprocessor Architecture"></a>Microprocessor Architecture</h3><p style="text-align:center;"><img src="/images/sv-microprocessor/IMG_20210123_152930.jpg" alt="CPU Architecture" style="width: 50%; height: 50%">
 
 </p><p>PC:<br>The program counter is a sequential logic module that records the position of the program through the ROM and outputs the position to the sysbus when the next instruction needs to be loaded.</p>
 <p>IR:<br>The instruction register is a sequential logic module that reads the opcode from the sysbus and passes it to the sequencer.</p>
@@ -166,28 +125,29 @@
 
 <p>I then verified that the program was working correctly by simulating it in modelsim and going through each operation. I found that by the end of the first cycle the value in ram was 1’h55, which was to be expected when 1’hFF and 1’hAA are XORed together.<br><img src="/images/sv-microprocessor/waveform4.png" alt="Modelsim output" style="width: 100%; height: 100%"></p>
 <h4 id="Github-Repository-https-github-com-sunbanett40-XOR-Decryptor"><a href="#Github-Repository-https-github-com-sunbanett40-XOR-Decryptor" class="headerlink" title="Github Repository: https://github.com/sunbanett40/XOR-Decryptor"></a>Github Repository: <a target="_blank" rel="noopener" href="https://github.com/sunbanett40/XOR-Decryptor">https://github.com/sunbanett40/XOR-Decryptor</a></h4>
-      
-    </div>
-</article>
 
-    </li>
-  
-    <li>
-      <article class='ListView'>
-    <header class="title">
       
-        <h1>
-          <a href="/2021/01/19/State-Machines-in-SystemVerilog/">State Machines in SystemVerilog</a>
-        </h1>
-      
-      <div class='ListMeta'>
-  <time datetime="2021-01-19T20:38:25.000Z" itemprop="datePublished">
-    2021-01-19
-  </time>
-  
-  | 
-  <ul>
+
+    </section>
     
+      <section class='ArticleMeta'>
+          <div>
+            Joseph Butterworth &nbsp;
+            <time datetime="2021-01-24T15:02:00.000Z" itemprop="datePublished">
+              2021-01-24
+            </time>
+          </div>
+          
+            <div>
+              tags: 
+  <li class="meta-text">
+  { <a href="/tags/Microcontroller/">Microcontroller</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Assembler/">Assembler</a> }
+  </li>
+
   <li class="meta-text">
   { <a href="/tags/State-Machines/">State Machines</a> }
   </li>
@@ -197,66 +157,15 @@
   </li>
 
 
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <p>A state machine circuit has two main parts to it, a sequential series of memory states, and control logic to determine the next state. When converting a state machine into SystemVerilog making a distinction between the two elements can be useful. The memory states can be described by an always_ff block; the control logic can be described as an always_comb block.</p>
-<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//SystemVerilog State Machine template</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">module</span> template (<span class="keyword">output</span> <span class="keyword">logic</span> output1, output2, output3</span><br><span class="line">                  <span class="keyword">input</span> <span class="keyword">logic</span> clock, n_reset, input1, input2);</span><br><span class="line"></span><br><span class="line"><span class="keyword">enum</span> &#123;state1, state2, state3&#125; present_state, next_state;</span><br><span class="line"></span><br><span class="line"><span class="keyword">always_ff</span> @(<span class="keyword">posedge</span> clock, <span class="keyword">negedge</span> n_reset)</span><br><span class="line">    <span class="keyword">begin</span>: SEQ                              <span class="comment">//Sequential label for modelsim</span></span><br><span class="line">        <span class="keyword">if</span> (!n_reset)                       <span class="comment">//Reset</span></span><br><span class="line">            present_state &lt;= state1;</span><br><span class="line">        <span class="keyword">else</span>                                <span class="comment">//Update state on clockedge</span></span><br><span class="line">            present_state &lt;= next_state;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">always_comb</span></span><br><span class="line">    <span class="keyword">begin</span>: COM                              <span class="comment">//Combinational label for modelsim</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//Set default values of output</span></span><br><span class="line">        output1 = &#x27;<span class="number">0</span></span><br><span class="line">        output2 = &#x27;<span class="number">0</span></span><br><span class="line">        output3 = &#x27;<span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">unique</span> <span class="keyword">case</span> (present_state)         <span class="comment">//Unique case label gives compiler error if a state is missing</span></span><br><span class="line">            state1 : <span class="keyword">begin</span></span><br><span class="line">                output1 = &#x27;<span class="number">1</span>;               <span class="comment">//Assert unconditional output</span></span><br><span class="line">                <span class="keyword">if</span> (input1)                 <span class="comment">//Conditional to progress to next state</span></span><br><span class="line">                    next_state = state2;</span><br><span class="line">                <span class="keyword">else</span>                        <span class="comment">//Else stay in ready state</span></span><br><span class="line">                    next_state = state1;</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">            state2 : <span class="keyword">begin</span></span><br><span class="line">                output2 = &#x27;<span class="number">1</span>;               <span class="comment">//Assert unconditional output</span></span><br><span class="line">                <span class="keyword">if</span> (input2)                 <span class="comment">//Conditional to progress to next state</span></span><br><span class="line">                    next_state = state3;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    <span class="keyword">begin</span></span><br><span class="line">                        output1 = &#x27;<span class="number">1</span>;       <span class="comment">//Assert conditional output</span></span><br><span class="line">                        next_state = state1;<span class="comment">//Else go to ready state</span></span><br><span class="line">                    <span class="keyword">end</span></span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">            state3 : <span class="keyword">begin</span></span><br><span class="line">                output3 = &#x27;<span class="number">1</span>;               <span class="comment">//Assert unconditional output</span></span><br><span class="line">                next_state = state1;        <span class="comment">//Progress to next state</span></span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">endcase</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class='ListView'>
-    <header class="title">
-      
-        <h1>
-          <a href="/2020/12/01/Traffic-Light-State-Machine/">Traffic Light State Machine</a>
-        </h1>
-      
-      <div class='ListMeta'>
-  <time datetime="2020-12-01T20:35:34.000Z" itemprop="datePublished">
-    2020-12-01
-  </time>
-  
-  | 
-  <ul>
+            </div>
+          
+      </section>
     
-  <li class="meta-text">
-  { <a href="/tags/Electronics/">Electronics</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/State-Machines/">State Machines</a> }
-  </li>
-
-
-  </ul>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <p>Unfortunately content is missing :(</p>
-
-      
-    </div>
+    
 </article>
 
-    </li>
   
-</ul>
-
-
+</div>
 
             <footer>
     <div>© 2021 - Joseph Butterworth </div>
