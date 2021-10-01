@@ -9,8 +9,8 @@ menu:
 
 # Pictures shown on the sidebar
 # Use the absolute URL after generating
-avatar: C:\Users\Butty\Documents\00_Portfolio\sunbanett40.github.io\source\assets\gremlin.jpg
-sidebar_background: C:\Users\Butty\Documents\00_Portfolio\sunbanett40.github.io\source\assets\header.jpg
+avatar: /assets/gremlin.png
+sidebar_background: /assets/header.jpg
 
 rss: /atom.xml
 
@@ -21,9 +21,9 @@ excerpt_link: Read On »
 ## To add new icon, just copy .svg to source/assets/ and add entries below.
 media:
 
-LinkedIn: https://www.linkedin.com/in/joseph-butterworth-6a587b207/
-Github: https://github.com/sunbanett40
-Thingiverse: https://www.thingiverse.com/sunbane/designs
+linkedin: https://www.linkedin.com/in/joseph-butterworth-6a587b207/
+github: https://github.com/sunbanett40
+thingiverse: https://www.thingiverse.com/sunbane/designs
 
 source_han_font: true
 
