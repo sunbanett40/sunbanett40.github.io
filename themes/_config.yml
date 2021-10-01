@@ -9,8 +9,8 @@ menu:
 
 # Pictures shown on the sidebar
 # Use the absolute URL after generating
-avatar: /assets/gremlin.jpg
-sidebar_background: /assets/header.jpg
+avatar: C:\Users\Butty\Documents\00_Portfolio\sunbanett40.github.io\source\assets\gremlin.jpg
+sidebar_background: C:\Users\Butty\Documents\00_Portfolio\sunbanett40.github.io\source\assets\header.jpg
 
 rss: /atom.xml
 
