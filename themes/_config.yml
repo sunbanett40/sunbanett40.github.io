@@ -1,11 +1,11 @@
 # Links on sidebar
 menu:
   Home: /
+  About: /about/
+  Logbooks: /logbooks/
   Archive: /archives/
   # Tags: /tags/
   # Categories: /categories/
-  Logbooks: /logbooks/
-  About: /about/
 
 # Pictures shown on the sidebar
 # Use the absolute URL after generating
@@ -21,7 +21,8 @@ excerpt_link: Read On »
 ## To add new icon, just copy .svg to source/assets/ and add entries below.
 media:
 
-Github: https://github.com/nameoverflow
+LinkedIn: https://www.linkedin.com/in/joseph-butterworth-6a587b207/
+Github: https://github.com/sunbanett40
 Thingiverse: https://www.thingiverse.com/sunbane/designs
 
 source_han_font: true
