@@ -4,6 +4,7 @@ date: 2018-05-31 20:46:00
 tags: 
     - Electronics
     - PCB Design
+    - Soldering
     - 3D Design
 ---
 ### Introduction
