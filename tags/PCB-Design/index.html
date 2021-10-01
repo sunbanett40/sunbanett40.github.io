@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en-UK">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Butty Builds</title>
+
+
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+</head>
+
+<body>
+<div class="Shell">
+    <aside class='SideBar'>
+    <section class='avatar' style="background-image: url(/assets/sidebar.png)">
+        <div class='av-pic' style="background-image: url(/assets/profile1.jpg)">
+        </div>
+    </section>
+    <section class='menu'>
+        <div>Butty Builds</div>
+
+        <ul>
+
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+
+            <a href="/logbooks/" class="Btn">
+              <li>Logbooks</li>
+            </a>  
+
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+
+        </ul>
+    </section>
+    <section class="media">
+
+
+                <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/joseph-butterworth-6a587b207/">
+                    <img src="/assets/linkedin.svg" />
+                </a>
+
+
+
+                <a target="_blank" rel="noopener" href="https://github.com/sunbanett40">
+                    <img src="/assets/github.svg" />
+                </a>
+
+
+
+                <a target="_blank" rel="noopener" href="https://www.thingiverse.com/sunbane/designs">
+                    <img src="/assets/thingiverse.svg" />
+                </a>
+
+
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <ul class="Index">
+
+    <header class='PageTitle'>
+        <h1>{ PCB Design }</h1>
+    </header>
+
+
+    <li>
+      <article class='ListView'>
+    <header class="title">
+
+        <h1>
+          <a href="/2021/03/11/RFID-Sensor-Project-Part-2-PCB-Design/">RFID Sensor Project Part 2 - PCB Design</a>
+        </h1>
+
+      <div class='ListMeta'>
+  <time datetime="2021-03-11T12:14:00.000Z" itemprop="datePublished">
+    2021-03-11
+  </time>
+
+  | 
+  <ul>
+
+  <li class="meta-text">
+  { <a href="/tags/Electronics/">Electronics</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/PCB-Design/">PCB Design</a> }
+  </li>
+
+
+  </ul>
+
+
+</div>
+
+    </header>
+    <div>
+
+        <h3 id="Circuit-Diagram"><a href="#Circuit-Diagram" class="headerlink" title="Circuit Diagram"></a>Circuit Diagram</h3><p>As the majority of the ciruit was designed previously in spice, the Eagle schematic for this file was proivided with those sections filled in. The rest of the file was filled in by importing sympol parts, and setting the model and package.<br><img src="/images/rfid2/RFID18.png" alt="RFID schematic" style="width: 100%; height: 100%" class="center"></p>
+<h3 id="PCB-Outline"><a href="#PCB-Outline" class="headerlink" title="PCB Outline"></a>PCB Outline</h3><p>I then created a corresponding board file to the the schematic, and was presented by the following screen.</p>
+<p style="text-align:center;"><img src="/images/rfid2/RFID19.png" alt="Board outline" style="width: 75%; height: 75%">
+
+</p><p>As we had been provided by the outline of a box that the PCB was to fit in, I modified the shape of the PCB to fit within it. To maximise the space available I made cut outs for the areas where the screw connections of the case will be. I then removed the deadspace under where the buttons will be. Finally, I rounded off the corners so the board is comfortable to pick up and work on once it has been fabricated.</p>
+<p style="text-align:center;"><img src="/images/rfid2/RFID20.png" alt="Board outline" style="width: 75%; height: 75%">
+
+</p><h3 id="Part-Placement"><a href="#Part-Placement" class="headerlink" title="Part Placement"></a>Part Placement</h3><p>The first step in designing the board layout was to decide where the major components (i/o and ICs) were going to be placed. With this decided the remaining area would dictate where the passive components and the print inductor were to be placed. To ease in placing the passive components I lined them around the board edge, woughly in the order they were to be connected.</p>
+<p style="text-align:center;"><img src="/images/rfid2/RFID21.png" alt="Part placement" style="width: 75%; height: 75%">
+
+</p><p>Once I had finalised the position of the major components, the next step was to place the passive components. I did this in such a way as to minimise the routing needed between them. In this design I also took care to seperate the digital and analogue sections of the design.  </p>
+<p style="text-align:center;"><img src="/images/rfid2/RFID22.png" alt="Part placement" style="width: 75%; height: 75%">
+
+</p><h3 id="Routing"><a href="#Routing" class="headerlink" title="Routing"></a>Routing</h3><p>When routing, I started by connecting all the data (signal) lines. These were connected with 10 mil traces and were relatively simple to connect as the traces were usually short owing to the components being placed together in the design. </p>
+<p style="text-align:center;"><img src="/images/rfid2/RFID23.png" alt="Routing" style="width: 75%; height: 75%">
+
+</p><p>The next step was then to connect the power lines. Not all the power lines needed connecting as the design was going to utilise ground and power planes. However, in connecting seperated sections of the design, such as power connections on the wrong side of the board, vias and 20 mil traces were used.</p>
+<p style="text-align:center;"><img src="/images/rfid2/RFID24.png" alt="Routing" style="width: 75%; height: 75%">
+
+</p><h3 id="Print-Inductor"><a href="#Print-Inductor" class="headerlink" title="Print Inductor"></a>Print Inductor</h3><p>By this point most of the design had been completed the final part of placement and routing was to create a print inductor. To do this I added a new package in the parts library, and used the ULP tool to create a print inductor. I then duplicated the inductor and flipped it to the base plate to create a two layer inductor. I connected these with a via to create a finished package. Once I had the package I asssigned the connection points of my design and it was reasy.<br><img src="/images/rfid2/RFID25.png" alt="Inductor" style="width: 50%; height: 50%"><img src="/images/rfid2/RFID26.png" alt="Inductor" style="width: 50%; height: 50%"></p>
+<p>I placed it on the board in the area that I had left for it.</p>
+<p style="text-align:center;"><img src="/images/rfid2/RFID27.png" alt="Board outline" style="width: 75%; height: 75%">
+
+</p><h3 id="Ground-amp-Power-Planes"><a href="#Ground-amp-Power-Planes" class="headerlink" title="Ground &amp; Power Planes"></a>Ground &amp; Power Planes</h3><p>Once I had connected the components I then had to create base and power planes. To do this I created a polygon, and selected ratsnest to connect the planes to the rest of the circuit.<br><img src="/images/rfid2/RFID28.png" alt="Power plane" style="width: 50%; height: 50%"><img src="/images/rfid2/RFID29.png" alt="Power Plane" style="width: 50%; height: 50%"></p>
+<h3 id="Silkscreen"><a href="#Silkscreen" class="headerlink" title="Silkscreen"></a>Silkscreen</h3><p>At this stage I added my name and information to the board design, tidied the labels for components up, and decided on any images I wanted to include.</p>
+<p>For my silkscreen I wanted a picture of the print inductor, If the board were lacking a case I feel this would be a usefyl feature for the user as it would give a visual idea of where to scan. To do this I went back to the package library and used the ULP tools to export the print as a bitmap. I then imported the bitmap on the board file and laid the image over the top of the Inductor.<br><img src="/images/rfid2/RFID30.png" alt="Silkscreen" style="width: 50%; height: 50%"><img src="/images/rfid2/RFID31.bmp" alt="Silkscreen" style="width: 50%; height: 50%"></p>
+<h3 id="Final-Product"><a href="#Final-Product" class="headerlink" title="Final Product"></a>Final Product</h3><p>Finally, a design rule check was run to ensure that the design conformed to the fabrication house’s capabilities. Although a few errors were found, these were expected owing to how the print inductor was created. This is now the completed board ready for fabrication, this was finally exported as a gerber file and submitted for production.<br><img src="/images/rfid2/RFID33.png" alt="Final DRC" style="width: 50%; height: 50%"><img src="/images/rfid2/RFID34.png" alt="Finished Board" style="width: 50%; height: 50%"></p>
+
+
+    </div>
+</article>
+
+    </li>
+
+    <li>
+      <article class='ListView'>
+    <header class="title">
+
+        <h1>
+          <a href="/2018/05/31/Rotating-Promotional-Display/">Rotating Promotional Display</a>
+        </h1>
+
+      <div class='ListMeta'>
+  <time datetime="2018-05-31T19:46:00.000Z" itemprop="datePublished">
+    2018-05-31
+  </time>
+
+  | 
+  <ul>
+
+  <li class="meta-text">
+  { <a href="/tags/3D-Design/">3D Design</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Electronics/">Electronics</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/PCB-Design/">PCB Design</a> }
+  </li>
+
+
+  </ul>
+
+
+</div>
+
+    </header>
+    <div>
+
+        <h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>For my GCSE Electronic Products coursework, I had to design and make a userful electronic product that could be sold commercially. For my project decided to create a rotating promotional display, similar to something that might be used in a shop window. </p>
+<h3 id="The-Project"><a href="#The-Project" class="headerlink" title="The Project"></a>The Project</h3><object data="https://butty-builds.me/pdfs/Rotating%20Promotional%20Display.pdf" type="application/pdf" width="100%" height="700px">
+<! -- Waylan & amc @ https://stackoverflow.com/questions/39777166/display-pdf-image-in-markdown -->
+    <embed src="https://butty-builds.me/pdfs/Rotating%20Promotional%20Display.pdf">
+        <p>This browser does not support PDFs. Please download the PDF to view it: <a target="_blank" rel="noopener" href="https://butty-builds.me/pdfs/Rotating%20Promotional%20Display.pdf">Download PDF</a>.</p>
+
+</object>
+
+    </div>
+</article>
+
+    </li>
+
+</ul>
+
+
+
+            <footer>
+    <div>© 2021 - Joseph Butterworth </div>
+    <div>
+        <span>
+            Powered by <a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a target="_blank" rel="noopener" href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+
+<script src="/js/pager/dist/singlepager.js"></script>
+
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>

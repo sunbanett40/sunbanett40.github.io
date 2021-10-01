@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en-UK">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Butty Builds</title>
+
+
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+</head>
+
+<body>
+<div class="Shell">
+    <aside class='SideBar'>
+    <section class='avatar' style="background-image: url(/assets/sidebar.png)">
+        <div class='av-pic' style="background-image: url(/assets/profile1.jpg)">
+        </div>
+    </section>
+    <section class='menu'>
+        <div>Butty Builds</div>
+
+        <ul>
+
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+
+            <a href="/logbooks/" class="Btn">
+              <li>Logbooks</li>
+            </a>  
+
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+
+        </ul>
+    </section>
+    <section class="media">
+
+
+                <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/joseph-butterworth-6a587b207/">
+                    <img src="/assets/linkedin.svg" />
+                </a>
+
+
+
+                <a target="_blank" rel="noopener" href="https://github.com/sunbanett40">
+                    <img src="/assets/github.svg" />
+                </a>
+
+
+
+                <a target="_blank" rel="noopener" href="https://www.thingiverse.com/sunbane/designs">
+                    <img src="/assets/thingiverse.svg" />
+                </a>
+
+
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <ul class="Index">
+
+    <header class='PageTitle'>
+        <h1>{ Electronics }</h1>
+    </header>
+
+
+    <li>
+      <article class='ListView'>
+    <header class="title">
+
+        <h1>
+          <a href="/2021/03/11/RFID-Sensor-Project-Part-2-PCB-Design/">RFID Sensor Project Part 2 - PCB Design</a>
+        </h1>
+
+      <div class='ListMeta'>
+  <time datetime="2021-03-11T12:14:00.000Z" itemprop="datePublished">
+    2021-03-11
+  </time>
+
+  | 
+  <ul>
+
+  <li class="meta-text">
+  { <a href="/tags/Electronics/">Electronics</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/PCB-Design/">PCB Design</a> }
+  </li>
+
+
+  </ul>
+
+
+</div>
+
+    </header>
+    <div>
+
+        <h3 id="Circuit-Diagram"><a href="#Circuit-Diagram" class="headerlink" title="Circuit Diagram"></a>Circuit Diagram</h3><p>As the majority of the ciruit was designed previously in spice, the Eagle schematic for this file was proivided with those sections filled in. The rest of the file was filled in by importing sympol parts, and setting the model and package.<br><img src="/images/rfid2/RFID18.png" alt="RFID schematic" style="width: 100%; height: 100%" class="center"></p>
+<h3 id="PCB-Outline"><a href="#PCB-Outline" class="headerlink" title="PCB Outline"></a>PCB Outline</h3><p>I then created a corresponding board file to the the schematic, and was presented by the following screen.</p>
+<p style="text-align:center;"><img src="/images/rfid2/RFID19.png" alt="Board outline" style="width: 75%; height: 75%">
+
+</p><p>As we had been provided by the outline of a box that the PCB was to fit in, I modified the shape of the PCB to fit within it. To maximise the space available I made cut outs for the areas where the screw connections of the case will be. I then removed the deadspace under where the buttons will be. Finally, I rounded off the corners so the board is comfortable to pick up and work on once it has been fabricated.</p>
+<p style="text-align:center;"><img src="/images/rfid2/RFID20.png" alt="Board outline" style="width: 75%; height: 75%">
+
+</p><h3 id="Part-Placement"><a href="#Part-Placement" class="headerlink" title="Part Placement"></a>Part Placement</h3><p>The first step in designing the board layout was to decide where the major components (i/o and ICs) were going to be placed. With this decided the remaining area would dictate where the passive components and the print inductor were to be placed. To ease in placing the passive components I lined them around the board edge, woughly in the order they were to be connected.</p>
+<p style="text-align:center;"><img src="/images/rfid2/RFID21.png" alt="Part placement" style="width: 75%; height: 75%">
+
+</p><p>Once I had finalised the position of the major components, the next step was to place the passive components. I did this in such a way as to minimise the routing needed between them. In this design I also took care to seperate the digital and analogue sections of the design.  </p>
+<p style="text-align:center;"><img src="/images/rfid2/RFID22.png" alt="Part placement" style="width: 75%; height: 75%">
+
+</p><h3 id="Routing"><a href="#Routing" class="headerlink" title="Routing"></a>Routing</h3><p>When routing, I started by connecting all the data (signal) lines. These were connected with 10 mil traces and were relatively simple to connect as the traces were usually short owing to the components being placed together in the design. </p>
+<p style="text-align:center;"><img src="/images/rfid2/RFID23.png" alt="Routing" style="width: 75%; height: 75%">
+
+</p><p>The next step was then to connect the power lines. Not all the power lines needed connecting as the design was going to utilise ground and power planes. However, in connecting seperated sections of the design, such as power connections on the wrong side of the board, vias and 20 mil traces were used.</p>
+<p style="text-align:center;"><img src="/images/rfid2/RFID24.png" alt="Routing" style="width: 75%; height: 75%">
+
+</p><h3 id="Print-Inductor"><a href="#Print-Inductor" class="headerlink" title="Print Inductor"></a>Print Inductor</h3><p>By this point most of the design had been completed the final part of placement and routing was to create a print inductor. To do this I added a new package in the parts library, and used the ULP tool to create a print inductor. I then duplicated the inductor and flipped it to the base plate to create a two layer inductor. I connected these with a via to create a finished package. Once I had the package I asssigned the connection points of my design and it was reasy.<br><img src="/images/rfid2/RFID25.png" alt="Inductor" style="width: 50%; height: 50%"><img src="/images/rfid2/RFID26.png" alt="Inductor" style="width: 50%; height: 50%"></p>
+<p>I placed it on the board in the area that I had left for it.</p>
+<p style="text-align:center;"><img src="/images/rfid2/RFID27.png" alt="Board outline" style="width: 75%; height: 75%">
+
+</p><h3 id="Ground-amp-Power-Planes"><a href="#Ground-amp-Power-Planes" class="headerlink" title="Ground &amp; Power Planes"></a>Ground &amp; Power Planes</h3><p>Once I had connected the components I then had to create base and power planes. To do this I created a polygon, and selected ratsnest to connect the planes to the rest of the circuit.<br><img src="/images/rfid2/RFID28.png" alt="Power plane" style="width: 50%; height: 50%"><img src="/images/rfid2/RFID29.png" alt="Power Plane" style="width: 50%; height: 50%"></p>
+<h3 id="Silkscreen"><a href="#Silkscreen" class="headerlink" title="Silkscreen"></a>Silkscreen</h3><p>At this stage I added my name and information to the board design, tidied the labels for components up, and decided on any images I wanted to include.</p>
+<p>For my silkscreen I wanted a picture of the print inductor, If the board were lacking a case I feel this would be a usefyl feature for the user as it would give a visual idea of where to scan. To do this I went back to the package library and used the ULP tools to export the print as a bitmap. I then imported the bitmap on the board file and laid the image over the top of the Inductor.<br><img src="/images/rfid2/RFID30.png" alt="Silkscreen" style="width: 50%; height: 50%"><img src="/images/rfid2/RFID31.bmp" alt="Silkscreen" style="width: 50%; height: 50%"></p>
+<h3 id="Final-Product"><a href="#Final-Product" class="headerlink" title="Final Product"></a>Final Product</h3><p>Finally, a design rule check was run to ensure that the design conformed to the fabrication house’s capabilities. Although a few errors were found, these were expected owing to how the print inductor was created. This is now the completed board ready for fabrication, this was finally exported as a gerber file and submitted for production.<br><img src="/images/rfid2/RFID33.png" alt="Final DRC" style="width: 50%; height: 50%"><img src="/images/rfid2/RFID34.png" alt="Finished Board" style="width: 50%; height: 50%"></p>
+
+
+    </div>
+</article>
+
+    </li>
+
+    <li>
+      <article class='ListView'>
+    <header class="title">
+
+        <h1>
+          <a href="/2021/02/11/RFID-Sensor-Project-Part-1-Analogue-Simulation/">RFID Sensor Project Part 1 - Analogue Simulation</a>
+        </h1>
+
+      <div class='ListMeta'>
+  <time datetime="2021-02-11T11:56:00.000Z" itemprop="datePublished">
+    2021-02-11
+  </time>
+
+  | 
+  <ul>
+
+  <li class="meta-text">
+  { <a href="/tags/Electronics/">Electronics</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Circuit-Simulation/">Circuit Simulation</a> }
+  </li>
+
+
+  </ul>
+
+
+</div>
+
+    </header>
+    <div>
+
+        <h3 id="LCR-Circuit"><a href="#LCR-Circuit" class="headerlink" title="LCR Circuit"></a>LCR Circuit</h3><p>I first created my LCR circuit using modelsim. This required placing basic components and connecting them with wires.</p>
+<p style="text-align:center;"><img src="/images/rfid1/RFID1.png" alt="LCR circuit" style="width: 33%; height: 33%">
+
+</p><p>I then performed an AC analysis to determine the 3dB point of this bandpass filter. I found the 3dB to be 195KHz.<br><img src="/images/rfid1/RFID2.png" alt="AC sweep" style="width: 100%; height: 100%"></p>
+<p>I then changed the source type to a pulse. This allowed me to perform a transient analysis of the band pass filter.</p>
+<p style="text-align:center;"><img src="/images/rfid1/RFID3.png" alt="LCR circuit" style="width: 33%; height: 33%">
+
+</p><p>I found that the response would fluctuate.<br><img src="/images/rfid1/RFID4.png" alt="Transient responce" style="width: 50%; height: 50%"><img src="/images/rfid1/RFID5.png" alt="Transient responce" style="width: 50%; height: 50%"></p>
+<p>I then increased the frequency to 125KHz. I found that the response stabilised and that it rapidly decayed.<br><img src="/images/rfid1/RFID6.png" alt="Transient responce" style="width: 50%; height: 50%"><img src="/images/rfid1/RFID7.png" alt="Transient responce" style="width: 50%; height: 50%"></p>
+<p>However, this simulation is not a realistic case for a digital microcontroller pin which has an output impedance of around 50Ω. </p>
+<p style="text-align:center;"><img src="/images/rfid1/RFID8.png" alt="LCR Circuit" style="width: 33%; height: 33%">
+
+</p><p>Modifying the circuit to include the 50Ω impedance I that the response decayed much more rapidly.<br><img src="/images/rfid1/RFID9.png" alt="Transient responce" style="width: 50%; height: 50%"><img src="/images/rfid1/RFID10.png" alt="Transient responce" style="width: 50%; height: 50%"></p>
+<h3 id="AM-Demodulator"><a href="#AM-Demodulator" class="headerlink" title="AM Demodulator"></a>AM Demodulator</h3><p>Creating the AM demodulator I was able to perform both AC and transient analysis on each of the “wires”.</p>
+<p style="text-align:center;"><img src="/images/rfid1/RFID11.png" alt="AM Demodulator" style="width: 33%; height: 33%">
+
+</p><p>I found that the output removes the information signal from the carrier frequency. It tended towards an attenuation of -50 dB.<br><img src="/images/rfid1/RFID12.png" alt="AC sweep" style="width: 100%; height: 100%"><br><img src="/images/rfid1/RFID13.png" alt="Transient responce" style="width: 50%; height: 50%"><img src="/images/rfid1/RFID14.png" alt="Transient responce" style="width: 50%; height: 50%"></p>
+<h3 id="MFB-Active-Low-Pass-Filter"><a href="#MFB-Active-Low-Pass-Filter" class="headerlink" title="MFB Active Low Pass Filter"></a>MFB Active Low Pass Filter</h3><p style="text-align:center;"><img src="/images/rfid1/RFID15.png" alt="MFB filter" style="width: 75%; height: 75%">
+
+</p><p>The active filter has a gain of 50dB. Its 3dB point is 45KHz.<br><img src="/images/rfid1/RFID16.png" alt="AC sweep" style="width: 100%; height: 100%"></p>
+<p>The transient response of the circuit shows that there is a small delay between the input and the output response, this is due to the slew rate of the op-amp used.<br><img src="/images/rfid1/RFID17.png" alt="Transient responce" style="width: 100%; height: 100%"></p>
+
+
+    </div>
+</article>
+
+    </li>
+
+    <li>
+      <article class='ListView'>
+    <header class="title">
+
+        <h1>
+          <a href="/2020/12/01/Traffic-Light-State-Machine/">Traffic Light State Machine</a>
+        </h1>
+
+      <div class='ListMeta'>
+  <time datetime="2020-12-01T20:35:34.000Z" itemprop="datePublished">
+    2020-12-01
+  </time>
+
+  | 
+  <ul>
+
+  <li class="meta-text">
+  { <a href="/tags/Electronics/">Electronics</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/State-Machines/">State Machines</a> }
+  </li>
+
+
+  </ul>
+
+
+</div>
+
+    </header>
+    <div>
+
+        <p>Unfortunately content is missing :(</p>
+
+
+    </div>
+</article>
+
+    </li>
+
+    <li>
+      <article class='ListView'>
+    <header class="title">
+
+        <h1>
+          <a href="/2020/03/11/g-by-Freefall-Timer/">g by Freefall Timer</a>
+        </h1>
+
+      <div class='ListMeta'>
+  <time datetime="2020-03-11T14:20:00.000Z" itemprop="datePublished">
+    2020-03-11
+  </time>
+
+  | 
+  <ul>
+
+  <li class="meta-text">
+  { <a href="/tags/Electronics/">Electronics</a> }
+  </li>
+
+
+  </ul>
+
+
+</div>
+
+    </header>
+    <div>
+
+        <p>Unfortunately content is missing :(</p>
+
+
+    </div>
+</article>
+
+    </li>
+
+    <li>
+      <article class='ListView'>
+    <header class="title">
+
+        <h1>
+          <a href="/2019/12/19/DAC-Design-Project/">DAC Design Project</a>
+        </h1>
+
+      <div class='ListMeta'>
+  <time datetime="2019-12-19T09:42:00.000Z" itemprop="datePublished">
+    2019-12-19
+  </time>
+
+  | 
+  <ul>
+
+  <li class="meta-text">
+  { <a href="/tags/Electronics/">Electronics</a> }
+  </li>
+
+
+  </ul>
+
+
+</div>
+
+    </header>
+    <div>
+
+        <h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>As part of my A-Level Electronics we have had to cover a lot of systems with operational amplifiers, at times it has been more like A-Level Op-Amps. One particular circuit that we have had to cover is the digital to analogue converter. I have found the ADC and DAC interesting; these are particularly important circuits as in an increasingly digital age it has only become more important to be able to interact between the digital world of computers and the analogue world around us. </p>
+<p>When learning about the circuit we were shown a demonstration circuit. Although the circuit was sufficient in showing how the process would work, it was not well designed as the steps were inconsistent and there was significant noice. I felt that I could design and construct a better circuit.<br><img src="/images/dac/DAC6.jpg" alt="Demo circuit" style="width: 50%; height: 50%"><img src="/images/dac/DAC12.jpg" alt="Demo results" style="width: 50%; height: 50%"></p>
+<h3 id="Circuit-Design"><a href="#Circuit-Design" class="headerlink" title="Circuit Design"></a>Circuit Design</h3><p>My main concern when designing this circuit was to ensure that there was even spacing between the output steps. To this I ensured that each input was a bigger than the last by a multiple of two. To ensure these steps using the resistors I had to hand, mostly E24 series resistors, I had to use multiple resistors to create a combined resistance. I combined resistors in series as it was easier to calculate, neater to diagram, and easier to breadboard.<br><img src="/images/dac/DAC13.png" alt="Circuit Diagram" style="width: 100%; height: 100%"></p>
+<p>Although not drawn in the circuit diagram, I replicated the 8 bit counter made from a CMOS 4060 and an RC filter. This was to create the binary counter used as the input to the DAC.</p>
+<h3 id="Circuit-Building"><a href="#Circuit-Building" class="headerlink" title="Circuit Building"></a>Circuit Building</h3><p>Building the circut I generally followed the layout of the the demonstration. I made sure to keep my wiring neat and trimmed my resistors to make sure they were not touching.<br><img src="/images/dac/DAC3.jpg" alt="Circuit building" style="width: 50%; height: 50%"><img src="/images/dac/DAC5.jpg" alt="Circuit building" style="width: 50%; height: 50%"><br><img src="/images/dac/DAC9.jpg" alt="Circuit building" style="width: 50%; height: 50%"><img src="/images/dac/DAC11.jpg" alt="Circuit building" style="width: 50%; height: 50%"></p>
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>I was pleased to see that the steps on the output were roughly consistent, more so than the demonstration circuit. Although the noice on the output compared to the demonstration circuit, I would still say that this was an issue that needed addressing. Overall, I was pleased with this circuit, I feel that there is plenty to explore with both ADCs and DACs, these are topics I may come back to in the future.</p>
+<p>Unfortunately, at the time of writing I cannot find the image of the results to my project, I suspect it lost to a disposable USB. </p>
+
+
+    </div>
+</article>
+
+    </li>
+
+    <li>
+      <article class='ListView'>
+    <header class="title">
+
+        <h1>
+          <a href="/2019/06/13/Lottery-Number-Generator-PIC16F88/">Lottery Number Generator - PIC16F88</a>
+        </h1>
+
+      <div class='ListMeta'>
+  <time datetime="2019-06-13T01:07:00.000Z" itemprop="datePublished">
+    2019-06-13
+  </time>
+
+  | 
+  <ul>
+
+  <li class="meta-text">
+  { <a href="/tags/Electronics/">Electronics</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Microcontroller/">Microcontroller</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Assembler/">Assembler</a> }
+  </li>
+
+
+  </ul>
+
+
+</div>
+
+    </header>
+    <div>
+
+        <p>Unfortunately content is missing :(</p>
+
+
+    </div>
+</article>
+
+    </li>
+
+    <li>
+      <article class='ListView'>
+    <header class="title">
+
+        <h1>
+          <a href="/2019/05/21/Skip-Light-Design-Project/">Skip Light Design Project</a>
+        </h1>
+
+      <div class='ListMeta'>
+  <time datetime="2019-05-21T11:34:00.000Z" itemprop="datePublished">
+    2019-05-21
+  </time>
+
+  | 
+  <ul>
+
+  <li class="meta-text">
+  { <a href="/tags/Electronics/">Electronics</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Subsystem-Design/">Subsystem Design</a> }
+  </li>
+
+
+  </ul>
+
+
+</div>
+
+    </header>
+    <div>
+
+        <h3 id="Design-Brief"><a href="#Design-Brief" class="headerlink" title="Design Brief"></a>Design Brief</h3><p>You own a skip hire company. People keep hitting your skips at night in their cars and causing damage. You need an electronic device that will warn motorists at night of the presence of the skip.</p>
+<h3 id="Specification"><a href="#Specification" class="headerlink" title="Specification"></a>Specification</h3><p>●    The device should flash a light at night to warn motorists of the presence of the skip.<br>●    The light must only flash in the dark to save power.<br>●    The light must flash at a frequency of 5Hz ± 10%.<br>●    The light must run off a 9V battery.<br>●    The light must be bright enough to be visible from 25 m away.</p>
+<h3 id="Subsystem-Blocks"><a href="#Subsystem-Blocks" class="headerlink" title="Subsystem Blocks"></a>Subsystem Blocks</h3><p style="text-align:center;"><img src="/images/skip-light/skip_light_block_diagram.png" alt="Block diagram" style="width: 75%; height: 75%">
+
+</p><h4 id="Subsystem-1"><a href="#Subsystem-1" class="headerlink" title="Subsystem (1):"></a>Subsystem (1):</h4><p>I will use a potential divider with a LDR to measure a change in the light level, this will tell the circuit it is dark. I used a potentiometer in the circuit to allow me to dial in the resistance so that the output voltages for light and dark are above and below the switching threshold. Finally the  schmitt not gate is in this system to give exact logic levels with no flickering, this is caused by the gates hysteresis effect.</p>
+<p style="text-align:center;"><img src="/images/skip-light/skip_light_subsystem_1.png" alt="Subsystem 1" style="width: 33%; height: 33%">
+
+</p><h4 id="Subsystem-2"><a href="#Subsystem-2" class="headerlink" title="Subsystem (2):"></a>Subsystem (2):</h4><p>I will use a schmitt not gate astable to create a 5Hz pulse for the skip light. The use of a schmitt not gate astable instead of a 555 astable because I was already using a schmitt not gate in my design.</p>
+<p style="text-align:center;"><img src="/images/skip-light/skip_light_subsystem_2.png" alt="Subsystem 2" style="width: 33%; height: 33%">
+
+</p><h4 id="Subsystem-3"><a href="#Subsystem-3" class="headerlink" title="Subsystem (3):"></a>Subsystem (3):</h4><p>For this part of the circuit I intend to just use an and gate as this very effectively combines the light sensors logic level and the astable, so that it outputs 5Hz when it is dark.</p>
+<p style="text-align:center;"><img src="/images/skip-light/skip_light_subsystem_3.png" alt="Subsystem 3" style="width: 33%; height: 33%">
+
+</p><h4 id="Subsystem-4"><a href="#Subsystem-4" class="headerlink" title="Subsystem (4):"></a>Subsystem (4):</h4><p>To drive the LED I will use a N-channel MOSFET. This will allow me to drive the LED at higher currents than the and gate will be able to output. This is necessary as the LED I intend to use will be a very powerful one, requiring more current. I have decided on a MOSFET instead of a NPN transistor as it will allow me to drive the LED with negligible current from the and gate. In addition the MOSFETs much faster switching speed will help maintain the clear square wave of the astable.</p>
+<p style="text-align:center;"><img src="/images/skip-light/skip_light_subsystem_4.png" alt="Subsystem 4" style="width: 33%; height: 33%">
+
+</p><h4 id="Subsystem-5"><a href="#Subsystem-5" class="headerlink" title="Subsystem (5):"></a>Subsystem (5):</h4><p>To provide the output for this system I am going to use a super bright LED. I have calculated the protection resistor needed to be about 910Ω I have tested the two nearest resistor values and found that both will work continuously. I have decided to use the smaller value as </p><p style="text-align:center;"><img src="/images/skip-light/skip_light_subsystem_5.png" alt="Subsystem 5" style="width: 33%; height: 33%"></p>
+<h3 id="Circuit-Diagram"><a href="#Circuit-Diagram" class="headerlink" title="Circuit Diagram:"></a>Circuit Diagram:</h3><p style="text-align:center;"><img src="/images/skip-light/skip_light_circuit_diagram_1.png" alt="Circuit diagram" style="width: 75%; height: 75%">
+
+</p><p>For the final circuit diagram I combined all of the different subsystems I had built into one design. Once I did this I noticed that I could condense the design down further into one chip instead of two, using nand gate simplification. To keep the hysteresis quality of the schmitt not gate I used a schmitt nand gate instead of a normal one. This meant each subsystem works the same but using the same chip.</p>
+<p style="text-align:center;"><img src="/images/skip-light/skip_light_circuit_diagram_2.png" alt="NAND simplification" style="width: 75%; height: 75%">
+
+</p><h3 id="Photo-of-Working-circuit"><a href="#Photo-of-Working-circuit" class="headerlink" title="Photo of Working circuit:"></a>Photo of Working circuit:</h3><p>Once built I needed to get my circuit working. To get it working, I had to do two things. First I had to find the right resistance for the potentiometre. This was so it outputted above and below the threshold voltage of the schmitt nand gate I used. To do this I used a multimeter and measured the output voltage. I found that a resistance of about 2.5KΩ was a very effective value. Secondly, I found that my LED was always dimly on. I found that the problem was my MOSFET was leaking current. To fix this I replaced the model of my MOSFET.<br><img src="/images/skip-light/skip_light_working_1.png" alt="Finished circuit" style="width: 50%; height: 50%"><img src="/images/skip-light/skip_light_working_2.png" alt="Light flashing" style="width: 50%; height: 50%"></p>
+<h3 id="Testing-against-specification"><a href="#Testing-against-specification" class="headerlink" title="Testing against specification"></a>Testing against specification</h3><p>●    The device should flash a light at night to warn motorists of the presence of the skip - My system flashes a light when it is dark.<br>●    The light must only flash in the dark to save power - My system uses a LDR to flash a light only when it is dark.<br>●    The light must flash at a frequency of 5Hz ± 10% - My system uses an astable that flashes at 5.23Hz, within the 10% tolerance.<br><img src="/images/skip-light/SL3.BMP" alt="DSO display" style="width: 50%; height: 50%"><br>●    The light must run off a 9V battery - The light runs off of a 9V power supply, meaning it could be run from a PP3 battery. However, the power consumption so it couldn’t last long.<br>●    The light must be bright enough to be visible from 25 m away - The light I used was the brightest light I had available to me, it was brighter than the lamp that I initially tested, suggesting it reaches this criteria. If it does not I don’t have any way to improve it, unfortunately.</p>
+<h3 id="Evaluation"><a href="#Evaluation" class="headerlink" title="Evaluation"></a>Evaluation</h3><p>During this project, I have been efficient with my time, making and testing circuit especially quickly, I feel this is partly due to the efficient design, that I came up with. I feel that during this project my evidence gathering has been quite week, in future projects I should remember to gather more evidence, whilst doing it.</p>
+<p>I have noticed that the LED can occasionally interfere with the light sensing subsystem. To remedy this when designing a case for the product the LED and LDR should be facing away from each other. Another issue that this design requires a lot of power, and so will not last long on a PP3 9V battery, to improve this you could use multiple in parallel or a LiPo instead, I feel the design can’t be made more power efficient as this power is mostly used to light the LED. </p>
+<p>To improve the design of this project, I would look at reducing the number of gates used even further. Even though the number of chips would not be changed, it may be possible to get it down to a smaller chip size. I would use a potentiometer in the astable system, as I found the calculated value for frequency was off of the actual and this would allow you to tune it to frequency you want. For more improvements I may consider, allowing the user to adjust the on/off time, this would especially help with the battery life.</p>
+<p>The system that I designed was small enough to fit on half a board and only used one chip. I would say this is highly efficient and as it met the specification also very successful. I am happy that the wiring is both neat and reliable, enough to be used effectively as a demonstrative piece.</p>
+
+
+    </div>
+</article>
+
+    </li>
+
+    <li>
+      <article class='ListView'>
+    <header class="title">
+
+        <h1>
+          <a href="/2018/05/31/Rotating-Promotional-Display/">Rotating Promotional Display</a>
+        </h1>
+
+      <div class='ListMeta'>
+  <time datetime="2018-05-31T19:46:00.000Z" itemprop="datePublished">
+    2018-05-31
+  </time>
+
+  | 
+  <ul>
+
+  <li class="meta-text">
+  { <a href="/tags/3D-Design/">3D Design</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Electronics/">Electronics</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/PCB-Design/">PCB Design</a> }
+  </li>
+
+
+  </ul>
+
+
+</div>
+
+    </header>
+    <div>
+
+        <h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>For my GCSE Electronic Products coursework, I had to design and make a userful electronic product that could be sold commercially. For my project decided to create a rotating promotional display, similar to something that might be used in a shop window. </p>
+<h3 id="The-Project"><a href="#The-Project" class="headerlink" title="The Project"></a>The Project</h3><object data="https://butty-builds.me/pdfs/Rotating%20Promotional%20Display.pdf" type="application/pdf" width="100%" height="700px">
+<! -- Waylan & amc @ https://stackoverflow.com/questions/39777166/display-pdf-image-in-markdown -->
+    <embed src="https://butty-builds.me/pdfs/Rotating%20Promotional%20Display.pdf">
+        <p>This browser does not support PDFs. Please download the PDF to view it: <a target="_blank" rel="noopener" href="https://butty-builds.me/pdfs/Rotating%20Promotional%20Display.pdf">Download PDF</a>.</p>
+
+</object>
+
+    </div>
+</article>
+
+    </li>
+
+</ul>
+
+
+
+            <footer>
+    <div>© 2021 - Joseph Butterworth </div>
+    <div>
+        <span>
+            Powered by <a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a target="_blank" rel="noopener" href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+
+<script src="/js/pager/dist/singlepager.js"></script>
+
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>
