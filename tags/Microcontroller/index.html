@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html lang="en-UK">
+<html lang="zh-cmn-Hans">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Butty Builds</title>
-
-
+  
+  
+  
   <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
-
+  
 <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
 
-
+  
 <link rel="stylesheet" href="/css/style.css">
 
 </head>
@@ -19,81 +20,55 @@
 <body>
 <div class="Shell">
     <aside class='SideBar'>
-    <section class='avatar' style="background-image: url(/assets/sidebar.png)">
-        <div class='av-pic' style="background-image: url(/assets/profile1.jpg)">
+    <section class='avatar' style="background-image: url()">
+        <div class='av-pic' style="background-image: url()">
         </div>
     </section>
     <section class='menu'>
         <div>Butty Builds</div>
-
+        
         <ul>
-
+          
             <a href="/" class="Btn">
               <li>Home</li>
             </a>  
-
-            <a href="/about/" class="Btn">
-              <li>About</li>
-            </a>  
-
-            <a href="/logbooks/" class="Btn">
-              <li>Logbooks</li>
-            </a>  
-
+          
             <a href="/archives/" class="Btn">
               <li>Archive</li>
             </a>  
-
+          
         </ul>
     </section>
     <section class="media">
-
-
-                <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/joseph-butterworth-6a587b207/">
-                    <img src="/assets/linkedin.svg" />
-                </a>
-
-
-
-                <a target="_blank" rel="noopener" href="https://github.com/sunbanett40">
-                    <img src="/assets/github.svg" />
-                </a>
-
-
-
-                <a target="_blank" rel="noopener" href="https://www.thingiverse.com/sunbane/designs">
-                    <img src="/assets/thingiverse.svg" />
-                </a>
-
-
+        
     </section>
 </aside>
 
     <div class="container">
         <div data-pager-shell>
             <ul class="Index">
-
+  
     <header class='PageTitle'>
         <h1>{ Microcontroller }</h1>
     </header>
-
-
+  
+  
     <li>
       <article class='ListView'>
     <header class="title">
-
+      
         <h1>
           <a href="/2021/01/26/SystemVerilog-Microprocessor-Part-2-XOR-decryption/">SystemVerilog Microprocessor Part 2 - XOR decryption</a>
         </h1>
-
+      
       <div class='ListMeta'>
   <time datetime="2021-01-26T20:38:43.000Z" itemprop="datePublished">
     2021-01-26
   </time>
-
+  
   | 
   <ul>
-
+    
   <li class="meta-text">
   { <a href="/tags/Microcontroller/">Microcontroller</a> }
   </li>
@@ -108,13 +83,13 @@
 
 
   </ul>
-
-
+  
+  
 </div>
 
     </header>
     <div>
-
+      
         <h3 id="Encryption-and-Decryption"><a href="#Encryption-and-Decryption" class="headerlink" title="Encryption and Decryption"></a>Encryption and Decryption</h3><p>To decrypt a XOR encrypted message the decryption is to XOR the encrypted message with the  key again.</p>
 <p>As the key is unknown to us and the number of possible keys (32) is small it is easy to brute force the solution by testing every possible key.</p>
 <p>To test the output when the string “oiytmmvk” is decrypted with every possible key I wrote a program in ROM that would load in each value from the switches into a position in the RAM. It would then XOR each of these with a key outputting it to the display. Finally it would increment the key by one and repeat. This program meant I also had to modify the testbench so that it<br>would input the value wanted.</p>
@@ -144,28 +119,28 @@
 <p>To brute force a key length of three it would have to try 32768 possible combinations of keys. However, if the length of the key is unknown it becomes exponentially harder to brute force the attack.</p>
 <p>This method is scalable with different key lengths but can still be decrypted as long as the length of the key is less than the length of the encrypted string.</p>
 <h4 id="Github-Repository-https-github-com-sunbanett40-XOR-Decryptor"><a href="#Github-Repository-https-github-com-sunbanett40-XOR-Decryptor" class="headerlink" title="Github Repository: https://github.com/sunbanett40/XOR-Decryptor"></a>Github Repository: <a target="_blank" rel="noopener" href="https://github.com/sunbanett40/XOR-Decryptor">https://github.com/sunbanett40/XOR-Decryptor</a></h4>
-
+      
     </div>
 </article>
 
     </li>
-
+  
     <li>
       <article class='ListView'>
     <header class="title">
-
+      
         <h1>
           <a href="/2021/01/24/SystemVerilog-Microprocessor-Part-1-Building-the-Microprocessor/">SystemVerilog Microprocessor Part 1 - Building the Microprocessor</a>
         </h1>
-
+      
       <div class='ListMeta'>
   <time datetime="2021-01-24T15:02:00.000Z" itemprop="datePublished">
     2021-01-24
   </time>
-
+  
   | 
   <ul>
-
+    
   <li class="meta-text">
   { <a href="/tags/Microcontroller/">Microcontroller</a> }
   </li>
@@ -184,13 +159,13 @@
 
 
   </ul>
-
-
+  
+  
 </div>
 
     </header>
     <div>
-
+      
         <h3 id="Microprocessor-Architecture"><a href="#Microprocessor-Architecture" class="headerlink" title="Microprocessor Architecture"></a>Microprocessor Architecture</h3><p style="text-align:center;"><img src="/images/sv-microprocessor/IMG_20210123_152930.jpg" alt="CPU Architecture" style="width: 50%; height: 50%">
 
 </p><p>PC:<br>The program counter is a sequential logic module that records the position of the program through the ROM and outputs the position to the sysbus when the next instruction needs to be loaded.</p>
@@ -238,53 +213,53 @@
 
 <p>I then verified that the program was working correctly by simulating it in modelsim and going through each operation. I found that by the end of the first cycle the value in ram was 1’h55, which was to be expected when 1’hFF and 1’hAA are XORed together.<br><img src="/images/sv-microprocessor/waveform4.png" alt="Modelsim output" style="width: 100%; height: 100%"></p>
 <h4 id="Github-Repository-https-github-com-sunbanett40-XOR-Decryptor"><a href="#Github-Repository-https-github-com-sunbanett40-XOR-Decryptor" class="headerlink" title="Github Repository: https://github.com/sunbanett40/XOR-Decryptor"></a>Github Repository: <a target="_blank" rel="noopener" href="https://github.com/sunbanett40/XOR-Decryptor">https://github.com/sunbanett40/XOR-Decryptor</a></h4>
-
+      
     </div>
 </article>
 
     </li>
-
+  
     <li>
       <article class='ListView'>
     <header class="title">
-
+      
         <h1>
           <a href="/2019/10/24/Fizzbuzz-on-Arduino/">Fizzbuzz on Arduino</a>
         </h1>
-
+      
       <div class='ListMeta'>
   <time datetime="2019-10-24T11:56:00.000Z" itemprop="datePublished">
     2019-10-24
   </time>
-
+  
   | 
   <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Electronics/">Electronics</a> }
+  </li>
 
   <li class="meta-text">
   { <a href="/tags/Arduino/">Arduino</a> }
   </li>
 
   <li class="meta-text">
-  { <a href="/tags/Electonics/">Electonics</a> }
+  { <a href="/tags/C-Programming/">C++ Programming</a> }
   </li>
 
   <li class="meta-text">
   { <a href="/tags/Microcontroller/">Microcontroller</a> }
   </li>
 
-  <li class="meta-text">
-  { <a href="/tags/C-Programming/">C++ Programming</a> }
-  </li>
-
 
   </ul>
-
-
+  
+  
 </div>
 
     </header>
     <div>
-
+      
         <h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>Inspired by Tom Scott’s YouTube Video on the <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=QPZ0pIK_wsc&list=PL5ZXG50fTM7oZBZmFhJygA2419Hsg6v8H">FizzBuzz interview question</a> for programmers, which was proposed by the <a target="_blank" rel="noopener" href="https://imranontech.com/2007/01/24/using-fizzbuzz-to-find-developers-who-grok-coding/">‘Imran on Tech’ blog</a>. For this project, I used the Arduino IDE again, using an Arduino Nano and a 10 segment LED display as a physical solution to Imran’s interview question. The project helped to consolidate my programme planning and Arduino coding skills that I learned during my EPQ.</p>
 <h3 id="The-Hardware"><a href="#The-Hardware" class="headerlink" title="The Hardware"></a>The Hardware</h3><p>As I was planning on using an Arduino for my solution to the Fizzbuzz game I needed to create a circuit to surport it. As an input it had a button, and a low pass filter for debouncing, connected to a digital pin. As an output it had an LED display connected to digital pins in parrallel. The powerrails were poweered from the power and ground pins.</p>
 <p style="text-align:center;"><img src="/images/fizzbuzz/Fizzbuzz2.jpg" alt="Arduino board" style="width: 33%; height: 33%">
@@ -298,28 +273,28 @@
   <source src="/images/fizzbuzz/Fizzbuzz.mp4" type="video/mp4">
 This browser does not support the video tag.
 </video></p>
-
+      
     </div>
 </article>
 
     </li>
-
+  
     <li>
       <article class='ListView'>
     <header class="title">
-
+      
         <h1>
           <a href="/2019/06/13/Lottery-Number-Generator-PIC16F88/">Lottery Number Generator - PIC16F88</a>
         </h1>
-
+      
       <div class='ListMeta'>
   <time datetime="2019-06-13T01:07:00.000Z" itemprop="datePublished">
     2019-06-13
   </time>
-
+  
   | 
   <ul>
-
+    
   <li class="meta-text">
   { <a href="/tags/Electronics/">Electronics</a> }
   </li>
@@ -334,21 +309,39 @@ This browser does not support the video tag.
 
 
   </ul>
-
-
+  
+  
 </div>
 
     </header>
     <div>
+      
+        <h3 id="Design-Brief"><a href="#Design-Brief" class="headerlink" title="Design Brief"></a>Design Brief</h3><p>The lottery is a part of weekly life in the UK, for many. Adults will often buy tickets hoping to win the jackpot, or simply for the fun of playing. As every number is just as likely as each other, unless you play with lucky pick numbers or personal numbers in mind, it can be hard to choose your numbers. Especially if you wish to use different numbers every week. This product shall generate numbers for the UK lottery, to pick the numbers for people.</p>
+<h3 id="Specification"><a href="#Specification" class="headerlink" title="Specification"></a>Specification</h3><p>⦁    It must run off of a 5V supply.<br>⦁    It must have a button when pressed and released generates a number.<br>⦁    The random numbers generated must be between 1 and 59.<br>⦁    Must display in alphanumeric decimal.<br>⦁    It should display 2 digits.<br>⦁    It must output a desired number 98% of the time.<br>⦁    It must generate and display the numbers in under 5 milliseconds.</p>
+<h3 id="Inputs-amp-Outputs"><a href="#Inputs-amp-Outputs" class="headerlink" title="Inputs &amp; Outputs"></a>Inputs &amp; Outputs</h3><p>Schmitt NOT Gate (40106B)<br>Pin    Connection    Pin    Connection<br>1        VDD    Connect High<br>2        13<br>3        12<br>4        11<br>5    Connection from PTM switch    10<br>6    Connection to PIC Input    9<br>GND    Connect Low    8    </p>
+<p>PIC16F88<br>Pin    Code    Connection    Pin    Code    Connection<br>1    A2        18    A1<br>2    A3        17    A0    Input (from Schmitt Inverter)<br>3    A4        16    A7<br>4    A5        15    A6<br>5    GND    Connect Low    14    VDD    Connect High<br>6    B0    Units BCD A    13    B7<br>7    B1    Units BCD A    12    B6<br>8    B2    Units BCD A    11    B5<br>9    B3    Units BCD B    10    B4    </p>
+<p>BCD Decoder Driver (4511B)<br>Pin    Connection    Pin    Connection<br>1    BCD B    VDD    Connect High<br>2    BCD C    15    Segment F<br>3    Connect Low (lamp test)    14    Segment G<br>4    Connect High (ripple blanking)    13    Segment A<br>5    Connect Low (enable/store input)    12    Segment B<br>6    BCD D    11    Segment C<br>7    BCD A    10    Segment D<br>GND    Connect Low    9    Segment E</p>
+<h3 id="Circuit-Diagram"><a href="#Circuit-Diagram" class="headerlink" title="Circuit Diagram"></a>Circuit Diagram</h3><h3 id="Flow-Chart"><a href="#Flow-Chart" class="headerlink" title="Flow Chart"></a>Flow Chart</h3><h3 id="Program"><a href="#Program" class="headerlink" title="Program"></a>Program</h3><p>A copy of program version “0700t” &amp; “0700u” attached to the post. When initially coding my project I ran into the problem of it not correctly compiling, upon inspecting my code I found all my instances of “MOVLW” to be “MOVW” this is not a recognised bit of code as it as is not specify a target byte to move to the working register. I remedied this problem by using Notepad++’s find and replace function to correct every instance of this problem.</p>
+<p>Another change I made whilst writing my code was to the display section. When I first wrote it I used “BTFSC” and “BSF” commands to transfer the information from the clock register to PORTB. I then found out you can write to PORTB in the same way as any other directory. This allowed me to simplify a section of clumsy and repetitive code to a simpler and  much more elegant solution.  My new code used “MOVF” and “MOVWF” to simply transfer the data in the clock register to the output register of PORTB.</p>
+<h3 id="Evidence-of-Building"><a href="#Evidence-of-Building" class="headerlink" title="Evidence of Building"></a>Evidence of Building</h3><p>I started the building of my circuit by placing all the parts that I thought would go over the trench, this allows me to set up an efficient placement for wiring, this is particularly evident in that the “units” BCD decoder driver is underneath the the dual seven segment display so that output C directly lines up with its pin on the display. </p>
+<p>I then proceeded to wire the chips, inputs and outputs together. All the wires connecting to positive and negative pins with red and black wire respectively. I used green wire for all the data on the breadboard. I started with the switches to the PIC, then the PIC to the BCD decoder drivers, and finally the BCD decoder drivers to the dual seven segment display.</p>
+<p>Whilst testing the circuit I added a Schmitt NOT gate, this is why it is not connected particularly neatly. I used the Schmitt NOT gate to debounce the button input  to the PIC, this was done in an attempt to fix one of the bugs found. Although it was unsuccessful at fixing the bug I kept it in the circuit as I feel it will help the stability of my program.</p>
+<h3 id="Evidence-of-Testing"><a href="#Evidence-of-Testing" class="headerlink" title="Evidence of Testing"></a>Evidence of Testing</h3><p>I first tested my program to make sure that the code was working as desired. I did this by using the integrated testing systems on the PIC loading board. By using the buttons and LEDs I could see if any incorrect BCD signals were being sent. I did not find any numbers on either chips that were outside the desired range.</p>
+<p>To make sure that the lottery number generator worked I connected the breadboards to 5V and 0V. This showed that it was working as intended. After testing a few random numbers I concluded that there was an error in the wiring of the display. After looking back over the pinout information I found and corrected the error. This meant that all the device was working as intended.</p>
+<h3 id="Photo-of-Working-circuit"><a href="#Photo-of-Working-circuit" class="headerlink" title="Photo of Working circuit"></a>Photo of Working circuit</h3><p>Finally I neatened the connections on the board, making everything sit flush on breadboard whilst making sure it all stays working. This makes circuit easier to follow and reduces any stray capacitance in the circuit.</p>
+<p>⦁    Testing against specification<br>⦁    It must run off of a 5V supply.<br>⦁    Both the testing board and the final circuit ran off of a 5V supply. I specifically chose 4511s as my BCD decoder driver as they are designed to run off of 5V. The only change I made was adding a capacitor over the power rails as this smoothed any fluctuations in the supply voltage, this was needed as the PIC was especially finicky with its input voltages.<br>⦁    It must have a button when pressed and released generates a number.<br>⦁    The sole input for the device is a button, this needs to be pressed and released for a new number to be generated. This feature was especially coded into my project. Once the button had been pressed the PIC would be stuck in a looping of code until it was released again.</p>
+<p>⦁    The random numbers generated must be between 1 and 59.<br>⦁    The numbers generated are between the values 0 and 59. This includes every number that it is supposed to have but has a very small chance of displaying zero. I have literally met the needs of the specification. However, I feel that it is implicit that it doesn’t want any numbers but these, so I am not particularly happy about this<br>⦁    Must display in alphanumeric decimal.<br>⦁    I have used two BCD decoder drivers and a dual seven segment display to turn the output of the output to the PIC into a way that can easily be understood visually.<br>⦁    It should display 2 digits.<br>⦁    By using a dual seven segment display I have limited myself into only being able to display 2 digits, meeting the specification.<br>⦁    It must output a desired number 98% of the time.<br>⦁    To test to see if it was generating a desired number a sufficient amount of the time, I used my generator 200 times and recorded the frequency of every number generated. The number 0 was generated twice giving it a 1% chance of being generated. I see no significant evidence to say that 0 has a different probability of being generated. Giving it a 1.7% chance. This means it generates a desired number 98.3% of the time, meeting the specification.<br>⦁    It must generate and display the numbers in under 5 milliseconds.<br>⦁    The clock speed of the PIC16F88 is 38 KHz. Between the button being released and the clock moving to the output register there is a maximum of 7 lines of code. This means the maximum delay is 0.74 ms, well below the specified 5 ms.</p>
+<h3 id="Evaluation"><a href="#Evaluation" class="headerlink" title="Evaluation"></a>Evaluation</h3><p>During this project, I have learnt a great deal about assembly code and microcontrollers in general. This has been a particularly interesting project as I have had no prior experience with these systems, and would be interested to see what I can do with them in the future. If I were to do another project with them I would try using a larger number of Inputs as I feel that processing this information would play to the advantage of micro-controlled systems more than conventional circuits.</p>
+<p>I have noticed that my generator also generates the number 00 as well as 01-59. It is my belief that this error is to do with the code. I feel that with an alternative approach to the code that this problem can be remedied. This is likely to need a complete overhaul of the code, but I would say that this is definitely worth it. This would improve the percentage of desired outputs drastically, this would more wholefully meet the specification.</p>
+<p>To improve the design of this project, I would reduce the number of PICs to one. This would make a much more efficient design as it is much less wasteful. This would likely make removing 00 as an output easier as it would mean that the two PICs would not have to communicate. If this was made as a commercial project this would drastically reduce the overall cost of the circuit, as PICs are expensive. </p>
+<p>Overall I would say that this circuit was effective as it met every part of the specification. However, I would also call it inefficient as it was wasteful in its resources and the end result was underwhelming. Although I am pleased that I underwent this project I am not displeased with the result. I feel that I may have started this over ambitious and I have definitely learnt a lesson in setting realistic goals.</p>
 
-        <p>Unfortunately content is missing :(</p>
-
-
+      
     </div>
 </article>
 
     </li>
-
+  
 </ul>
 
 

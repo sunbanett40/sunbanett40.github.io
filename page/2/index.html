@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html lang="en-UK">
+<html lang="zh-cmn-Hans">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Butty Builds</title>
-
-
+  
+  
+  
   <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
-
+  
 <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
 
-
+  
 <link rel="stylesheet" href="/css/style.css">
 
 </head>
@@ -19,102 +20,467 @@
 <body>
 <div class="Shell">
     <aside class='SideBar'>
-    <section class='avatar' style="background-image: url(/assets/sidebar.png)">
-        <div class='av-pic' style="background-image: url(/assets/profile1.jpg)">
+    <section class='avatar' style="background-image: url()">
+        <div class='av-pic' style="background-image: url()">
         </div>
     </section>
     <section class='menu'>
         <div>Butty Builds</div>
-
+        
         <ul>
-
+          
             <a href="/" class="Btn">
               <li>Home</li>
             </a>  
-
-            <a href="/about/" class="Btn">
-              <li>About</li>
-            </a>  
-
-            <a href="/logbooks/" class="Btn">
-              <li>Logbooks</li>
-            </a>  
-
+          
             <a href="/archives/" class="Btn">
               <li>Archive</li>
             </a>  
-
+          
         </ul>
     </section>
     <section class="media">
-
-
-                <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/joseph-butterworth-6a587b207/">
-                    <img src="/assets/linkedin.svg" />
-                </a>
-
-
-
-                <a target="_blank" rel="noopener" href="https://github.com/sunbanett40">
-                    <img src="/assets/github.svg" />
-                </a>
-
-
-
-                <a target="_blank" rel="noopener" href="https://www.thingiverse.com/sunbane/designs">
-                    <img src="/assets/thingiverse.svg" />
-                </a>
-
-
+        
     </section>
 </aside>
 
     <div class="container">
         <div data-pager-shell>
             <ul class="Index">
-
-
+  
+  
     <li>
       <article class='ListView'>
     <header class="title">
+      
+        <h1>
+          <a href="/2021/01/24/SystemVerilog-Microprocessor-Part-1-Building-the-Microprocessor/">SystemVerilog Microprocessor Part 1 - Building the Microprocessor</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2021-01-24T15:02:00.000Z" itemprop="datePublished">
+    2021-01-24
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Microcontroller/">Microcontroller</a> }
+  </li>
 
+  <li class="meta-text">
+  { <a href="/tags/Assembler/">Assembler</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/State-Machines/">State Machines</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/SystemVerilog-HDL/">SystemVerilog HDL</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h3 id="Microprocessor-Architecture"><a href="#Microprocessor-Architecture" class="headerlink" title="Microprocessor Architecture"></a>Microprocessor Architecture</h3><p style="text-align:center;"><img src="/images/sv-microprocessor/IMG_20210123_152930.jpg" alt="CPU Architecture" style="width: 50%; height: 50%">
+
+</p><p>PC:<br>The program counter is a sequential logic module that records the position of the program through the ROM and outputs the position to the sysbus when the next instruction needs to be loaded.</p>
+<p>IR:<br>The instruction register is a sequential logic module that reads the opcode from the sysbus and passes it to the sequencer.</p>
+<p>Sequencer:<br>The sequencer is a state machine that controls the order of operation for the other modules. This is important to stop any bus contention occurring.</p>
+<p style="text-align:center;"><img src="/images/sv-microprocessor/IMG_20210123_151328.jpg" alt="Sequencer ASM Chart" style="width: 50%; height: 50%">
+
+</p><h3 id="Memory-Mapped-Input-and-Output"><a href="#Memory-Mapped-Input-and-Output" class="headerlink" title="Memory Mapped Input and Output"></a>Memory Mapped Input and Output</h3><p>A buffer and a register were now instantiated so that these could be used as input and output to the Microcontroller</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//instantiate 1 register and 1 buffer here</span></span><br><span class="line">buffer <span class="variable">#(.WORD_W(WORD_W), .OP_W(OP_W)) b1 (.*)</span>;</span><br><span class="line">sequencer <span class="variable">#(.WORD_W(WORD_W), .OP_W(OP_W)) s1 (.*)</span>;</span><br><span class="line">ir <span class="variable">#(.WORD_W(WORD_W), .OP_W(OP_W)) i1 (.*)</span>;</span><br><span class="line">pc <span class="variable">#(.WORD_W(WORD_W), .OP_W(OP_W)) p1 (.*)</span>;</span><br><span class="line">alu <span class="variable">#(.WORD_W(WORD_W), .OP_W(OP_W)) a1 (.*)</span>;</span><br><span class="line">ram <span class="variable">#(.WORD_W(WORD_W), .OP_W(OP_W)) r1 (.*)</span>;</span><br><span class="line">rom <span class="variable">#(.WORD_W(WORD_W), .OP_W(OP_W)) r2 (.*)</span>;</span><br><span class="line">register <span class="variable">#(.WORD_W(WORD_W), .OP_W(OP_W)) r3 (.*)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>The memory, going from address 0 to address 31, should now be connected to these applications.</p>
+<p style="text-align:center;"><img src="/images/sv-microprocessor/Memory.png" alt="Memory addresses" style="width: 50%; height: 50%">
+
+</p><p>However, if the CPU attempts to read from address 30, both the buffer and the RAM will be enabled. This is a problem as both RAM and the buffer will assert their values onto the sysbus as they are both being read. The two values on the same bus will interfere with each other giving a signal that is likely neither of them. This is bus contention.</p>
+<p>Modifying this line so that mdr is not written to the bus when mar contains addresses 30 or 31.</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//The following line in the ram module copies the contents of mdr to sysbus:</span></span><br><span class="line"><span class="keyword">assign</span> sysbus = (MDR_bus &amp; mar[WORD_W-OP_W-<span class="number">1</span>]</span><br><span class="line"> &amp; ~(mar==<span class="number">30</span> | mar==<span class="number">31</span>)) ? mdr : &#x27;z ; </span><br></pre></td></tr></table></figure>
+
+<p>Modifying the testbench, I made switches and displays as variables</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> testcpu;</span><br><span class="line"><span class="keyword">parameter</span> <span class="keyword">int</span> WORD_W = <span class="number">8</span>, OP_W = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">logic</span> clock, n_reset;</span><br><span class="line"><span class="keyword">logic</span> [WORD_W-<span class="number">1</span>:<span class="number">0</span>] switches;</span><br><span class="line"><span class="keyword">logic</span> [WORD_W-<span class="number">1</span>:<span class="number">0</span>] display;</span><br><span class="line"><span class="keyword">wire</span> [WORD_W-<span class="number">1</span>:<span class="number">0</span>] sysbus;</span><br></pre></td></tr></table></figure>
+
+<p>Simulating my testbench and microprocessor in Modelsim I got this output for my variables.<br><img src="/images/sv-microprocessor/waveform1.png" alt="Modelsim output" style="width: 100%; height: 100%"></p>
+<p>Both the display register and the switches are of unknown value as they are not defined at any point in the testbench or the program.</p>
+<p>I modified the program in the rom module such that the result in the accumulator is STOREd to address 31 (display) as well as address 16.</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">cpu2 <span class="variable">#(.WORD_W(WORD_W), .OP_W(OP_W)) c1 (.*)</span>;</span><br><span class="line"> <span class="number">0</span>: mdr = &#123;<span class="meta">`STORE, 5&#x27;d16 &#125;; //Store the contents of accumulator</span></span><br><span class="line"> <span class="number">1</span>: mdr = &#123;<span class="meta">`LOAD, 5&#x27;d16 &#125;; //Load the contents of address into the accumulator</span></span><br><span class="line"> <span class="number">2</span>: mdr = &#123;<span class="meta">`ADD, 5&#x27;d6 &#125;; //Add the contents of address to the accumulator</span></span><br><span class="line"> <span class="number">3</span>: mdr = &#123;<span class="meta">`STORE, 5&#x27;d16 &#125;; //Store the contents of accumulator</span></span><br><span class="line"> <span class="number">4</span>: mdr = &#123;<span class="meta">`STORE, 5&#x27;d31 &#125;; //Store the contents of accumulator</span></span><br><span class="line"> <span class="number">5</span>: mdr = &#123;<span class="meta">`BNE, 5&#x27;d7 &#125;; //Branch if result of last arithmetic operation is not zero</span></span><br><span class="line"> <span class="number">6</span>: mdr = <span class="number">2</span>; <span class="comment">//contents used by another instruction</span></span><br><span class="line"> <span class="number">7</span>: mdr = <span class="number">1</span>; <span class="comment">//contents used by another instruction</span></span><br></pre></td></tr></table></figure>
+
+<p>My modified program would output the value to the display register. This clearly shows the<br>program counts up in twos.</p>
+<img src="/images/sv-microprocessor/waveform2.png" alt="Modelsim output" style="width: 100%; height: 100%">
+
+<p>I then made a second change to the program in the rom module such that the data for the ADD operation comes from address 30 – the switches. In addition I also modified “testcpu” to apply different values to the switches during the simulation. </p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span>: mdr = &#123;<span class="meta">`STORE, 5&#x27;d16 &#125;; //Store the contents of accumulator</span></span><br><span class="line"><span class="number">1</span>: mdr = &#123;<span class="meta">`LOAD, 5&#x27;d16 &#125;; //Load the contents of address into the accumulator</span></span><br><span class="line"><span class="number">2</span>: mdr = &#123;<span class="meta">`ADD, 5&#x27;d30 &#125;; //Add the contents of address to the accumulator</span></span><br><span class="line"><span class="number">3</span>: mdr = &#123;<span class="meta">`STORE, 5&#x27;d16 &#125;; //Store the contents of accumulator</span></span><br><span class="line"><span class="number">4</span>: mdr = &#123;<span class="meta">`STORE, 5&#x27;d31 &#125;; //Store the contents of accumulator</span></span><br><span class="line"><span class="number">5</span>: mdr = &#123;<span class="meta">`BNE, 5&#x27;d6 &#125;; //Branch if result of last arithmetic operation is not zero</span></span><br><span class="line"><span class="number">6</span>: mdr = <span class="number">1</span>; <span class="comment">//contents used by another instruction</span></span><br></pre></td></tr></table></figure>
+
+<p>My new program would take the values from the switches and add it to the current value, outputting it to the display register.<br><img src="/images/sv-microprocessor/waveform3.png" alt="Modelsim output" style="width: 100%; height: 100%"></p>
+<h3 id="Extending-the-Microprocessor"><a href="#Extending-the-Microprocessor" class="headerlink" title="Extending the Microprocessor"></a>Extending the Microprocessor</h3><p>Creating a new version of the CPU, cpu3, I added the bitwise xor and bitwise not (complement) functions to act on the accumulator. This meant defining the opcodes, adding new enable lines between the ALU and sequencer, adding the functionality to the ALU and Sequencer and writing a new program in ROM to use these commands.</p>
+<p>ALU: </p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (load_ACC)</span><br><span class="line"><span class="keyword">if</span> (ALU_ACC)</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line"><span class="keyword">if</span> (ALU_add)</span><br><span class="line">acc &lt;= acc + sysbus;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (ALU_sub)</span><br><span class="line">acc &lt;= acc - sysbus;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (ALU_xor)</span><br><span class="line">acc &lt;= acc ^ sysbus;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (ALU_comp)</span><br><span class="line">acc &lt;= ~acc;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>Sequencer:</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">else</span></span><br><span class="line">acc &lt;= sysbus;</span><br><span class="line">s8: <span class="keyword">begin</span></span><br><span class="line">MDR_bus = <span class="number">1&#x27;b1</span> ;</span><br><span class="line">ALU_ACC = <span class="number">1&#x27;b1</span> ;</span><br><span class="line">load_ACC = <span class="number">1&#x27;b1</span> ;</span><br><span class="line"><span class="keyword">if</span> (op == <span class="meta">`ADD)</span></span><br><span class="line">ALU_add = <span class="number">1&#x27;b1</span> ;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (op == <span class="meta">`SUB)</span></span><br><span class="line">ALU_sub = <span class="number">1&#x27;b1</span> ;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (op == <span class="meta">`XOR)</span></span><br><span class="line">ALU_xor = <span class="number">1&#x27;b1</span> ;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (op == <span class="meta">`COMP)</span></span><br><span class="line">ALU_comp = <span class="number">1&#x27;b1</span> ;</span><br><span class="line">Next_State = s0;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>CPU:</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> cpu1 <span class="variable">#( parameter WORD_W = 8, OP_W = 3)</span></span><br><span class="line"> ( <span class="keyword">input</span> <span class="keyword">logic</span> clock, n_reset,</span><br><span class="line"> <span class="keyword">inout</span> <span class="keyword">wire</span> [WORD_W-<span class="number">1</span>:<span class="number">0</span>] sysbus);</span><br><span class="line"><span class="keyword">logic</span> ACC_bus, load_ACC, PC_bus, load_PC, load_IR, load_MAR,</span><br><span class="line">MDR_bus, load_MDR, ALU_ACC, ALU_add, ALU_sub, ALU_xor, ALU_comp,</span><br><span class="line">INC_PC, Addr_bus, CS, R_NW, z_flag; </span><br></pre></td></tr></table></figure>
+
+<p>ROM:</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> (mar)</span><br><span class="line"><span class="number">0</span>: mdr = &#123;<span class="meta">`STORE, 5&#x27;d16 &#125;; //Store the contents of accumulator</span></span><br><span class="line"><span class="number">1</span>: mdr = &#123;<span class="meta">`LOAD, 5&#x27;d16 &#125;; //Load the contents of address into the accumulator</span></span><br><span class="line"><span class="number">2</span>: mdr = &#123;<span class="meta">`COMP, 5&#x27;d8 &#125;; //Complement the contents of the accumulator</span></span><br><span class="line"><span class="number">3</span>: mdr = &#123;<span class="meta">`STORE, 5&#x27;d16 &#125;; //Store the contents of accumulator</span></span><br><span class="line"><span class="number">4</span>: mdr = &#123;<span class="meta">`LOAD, 5&#x27;d16 &#125;; //Load the contents of address into the accumulator</span></span><br><span class="line"><span class="number">5</span>: mdr = &#123;<span class="meta">`XOR, 5&#x27;d9 &#125;; //Xor the contents of address with the accumulator</span></span><br><span class="line"><span class="number">6</span>: mdr = &#123;<span class="meta">`STORE, 5&#x27;d16 &#125;; //Store the contents of accumulator</span></span><br><span class="line"><span class="number">7</span>: mdr = &#123;<span class="meta">`BNE, 5&#x27;d10 &#125;; //Branch if result of last arithmetic operation is not zero</span></span><br><span class="line"><span class="number">8</span>: mdr = <span class="number">1</span>; <span class="comment">//contents used by another instruction</span></span><br><span class="line"><span class="number">9</span>: mdr = <span class="number">170</span>; <span class="comment">//contents used by another instruction</span></span><br><span class="line"><span class="number">10</span>: mdr = <span class="number">1</span>; <span class="comment">//contents used by another instruction</span></span><br><span class="line"><span class="keyword">default</span> : mdr = <span class="number">0</span>; <span class="comment">//rest of ROM is 0</span></span><br><span class="line"><span class="keyword">endcase</span></span><br></pre></td></tr></table></figure>
+
+<p>I then verified that the program was working correctly by simulating it in modelsim and going through each operation. I found that by the end of the first cycle the value in ram was 1’h55, which was to be expected when 1’hFF and 1’hAA are XORed together.<br><img src="/images/sv-microprocessor/waveform4.png" alt="Modelsim output" style="width: 100%; height: 100%"></p>
+<h4 id="Github-Repository-https-github-com-sunbanett40-XOR-Decryptor"><a href="#Github-Repository-https-github-com-sunbanett40-XOR-Decryptor" class="headerlink" title="Github Repository: https://github.com/sunbanett40/XOR-Decryptor"></a>Github Repository: <a target="_blank" rel="noopener" href="https://github.com/sunbanett40/XOR-Decryptor">https://github.com/sunbanett40/XOR-Decryptor</a></h4>
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2021/01/19/State-Machines-in-SystemVerilog/">State Machines in SystemVerilog</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2021-01-19T20:38:25.000Z" itemprop="datePublished">
+    2021-01-19
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/State-Machines/">State Machines</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/SystemVerilog-HDL/">SystemVerilog HDL</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <p>A state machine circuit has two main parts to it, a sequential series of memory states, and control logic to determine the next state. When converting a state machine into SystemVerilog making a distinction between the two elements can be useful. The memory states can be described by an always_ff block; the control logic can be described as an always_comb block.</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//SystemVerilog State Machine template</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">module</span> template (<span class="keyword">output</span> <span class="keyword">logic</span> output1, output2, output3</span><br><span class="line">                  <span class="keyword">input</span> <span class="keyword">logic</span> clock, n_reset, input1, input2);</span><br><span class="line"></span><br><span class="line"><span class="keyword">enum</span> &#123;state1, state2, state3&#125; present_state, next_state;</span><br><span class="line"></span><br><span class="line"><span class="keyword">always_ff</span> @(<span class="keyword">posedge</span> clock, <span class="keyword">negedge</span> n_reset)</span><br><span class="line">    <span class="keyword">begin</span>: SEQ                              <span class="comment">//Sequential label for modelsim</span></span><br><span class="line">        <span class="keyword">if</span> (!n_reset)                       <span class="comment">//Reset</span></span><br><span class="line">            present_state &lt;= state1;</span><br><span class="line">        <span class="keyword">else</span>                                <span class="comment">//Update state on clockedge</span></span><br><span class="line">            present_state &lt;= next_state;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">always_comb</span></span><br><span class="line">    <span class="keyword">begin</span>: COM                              <span class="comment">//Combinational label for modelsim</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//Set default values of output</span></span><br><span class="line">        output1 = &#x27;<span class="number">0</span></span><br><span class="line">        output2 = &#x27;<span class="number">0</span></span><br><span class="line">        output3 = &#x27;<span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">unique</span> <span class="keyword">case</span> (present_state)         <span class="comment">//Unique case label gives compiler error if a state is missing</span></span><br><span class="line">            state1 : <span class="keyword">begin</span></span><br><span class="line">                output1 = &#x27;<span class="number">1</span>;               <span class="comment">//Assert unconditional output</span></span><br><span class="line">                <span class="keyword">if</span> (input1)                 <span class="comment">//Conditional to progress to next state</span></span><br><span class="line">                    next_state = state2;</span><br><span class="line">                <span class="keyword">else</span>                        <span class="comment">//Else stay in ready state</span></span><br><span class="line">                    next_state = state1;</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">            state2 : <span class="keyword">begin</span></span><br><span class="line">                output2 = &#x27;<span class="number">1</span>;               <span class="comment">//Assert unconditional output</span></span><br><span class="line">                <span class="keyword">if</span> (input2)                 <span class="comment">//Conditional to progress to next state</span></span><br><span class="line">                    next_state = state3;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    <span class="keyword">begin</span></span><br><span class="line">                        output1 = &#x27;<span class="number">1</span>;       <span class="comment">//Assert conditional output</span></span><br><span class="line">                        next_state = state1;<span class="comment">//Else go to ready state</span></span><br><span class="line">                    <span class="keyword">end</span></span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">            state3 : <span class="keyword">begin</span></span><br><span class="line">                output3 = &#x27;<span class="number">1</span>;               <span class="comment">//Assert unconditional output</span></span><br><span class="line">                next_state = state1;        <span class="comment">//Progress to next state</span></span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">endcase</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2020/12/01/Traffic-Light-State-Machine/">Traffic Light State Machine</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2020-12-01T20:35:34.000Z" itemprop="datePublished">
+    2020-12-01
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Electronics/">Electronics</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/State-Machines/">State Machines</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <p>Unfortunately content is missing :(</p>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2020/03/11/g-by-Freefall-Timer/">g by Freefall Timer</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2020-03-11T14:20:00.000Z" itemprop="datePublished">
+    2020-03-11
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Electronics/">Electronics</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Subsystem-Design/">Subsystem Design</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Physics/">Physics</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <p>Unfortunately content is missing :(</p>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2020/03/01/Investigation-of-Simple-Harmonic-Motion-in-a-Mass-Spring-Oscillator/">Investigation of Simple Harmonic Motion in a Mass-Spring Oscillator</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2020-03-01T14:31:35.000Z" itemprop="datePublished">
+    2020-03-01
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Physics/">Physics</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Experiment/">Experiment</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <p>Unfortunately content is missing :(</p>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2020/03/01/Investigation-of-Simple-Harmonic-Motion-in-a-Pendulum/">Investigation of Simple Harmonic Motion in a Pendulum</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2020-03-01T14:31:00.000Z" itemprop="datePublished">
+    2020-03-01
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Physics/">Physics</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Experiment/">Experiment</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <p>Unfortunately content is missing :(</p>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2019/12/19/DAC-Design-Project/">DAC Design Project</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2019-12-19T09:42:00.000Z" itemprop="datePublished">
+    2019-12-19
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Electronics/">Electronics</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>As part of my A-Level Electronics we have had to cover a lot of systems with operational amplifiers, at times it has been more like A-Level Op-Amps. One particular circuit that we have had to cover is the digital to analogue converter. I have found the ADC and DAC interesting; these are particularly important circuits as in an increasingly digital age it has only become more important to be able to interact between the digital world of computers and the analogue world around us. </p>
+<p>When learning about the circuit we were shown a demonstration circuit. Although the circuit was sufficient in showing how the process would work, it was not well designed as the steps were inconsistent and there was significant noice. I felt that I could design and construct a better circuit.<br><img src="/images/dac/DAC6.jpg" alt="Demo circuit" style="width: 50%; height: 50%"><img src="/images/dac/DAC12.jpg" alt="Demo results" style="width: 50%; height: 50%"></p>
+<h3 id="Circuit-Design"><a href="#Circuit-Design" class="headerlink" title="Circuit Design"></a>Circuit Design</h3><p>My main concern when designing this circuit was to ensure that there was even spacing between the output steps. To this I ensured that each input was a bigger than the last by a multiple of two. To ensure these steps using the resistors I had to hand, mostly E24 series resistors, I had to use multiple resistors to create a combined resistance. I combined resistors in series as it was easier to calculate, neater to diagram, and easier to breadboard.<br><img src="/images/dac/DAC13.png" alt="Circuit Diagram" style="width: 100%; height: 100%"></p>
+<p>Although not drawn in the circuit diagram, I replicated the 8 bit counter made from a CMOS 4060 and an RC filter. This was to create the binary counter used as the input to the DAC.</p>
+<h3 id="Circuit-Building"><a href="#Circuit-Building" class="headerlink" title="Circuit Building"></a>Circuit Building</h3><p>Building the circut I generally followed the layout of the the demonstration. I made sure to keep my wiring neat and trimmed my resistors to make sure they were not touching.<br><img src="/images/dac/DAC3.jpg" alt="Circuit building" style="width: 50%; height: 50%"><img src="/images/dac/DAC5.jpg" alt="Circuit building" style="width: 50%; height: 50%"><br><img src="/images/dac/DAC9.jpg" alt="Circuit building" style="width: 50%; height: 50%"><img src="/images/dac/DAC11.jpg" alt="Circuit building" style="width: 50%; height: 50%"></p>
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>I was pleased to see that the steps on the output were roughly consistent, more so than the demonstration circuit. Although the noice on the output compared to the demonstration circuit, I would still say that this was an issue that needed addressing. Overall, I was pleased with this circuit, I feel that there is plenty to explore with both ADCs and DACs, these are topics I may come back to in the future.</p>
+<p>Unfortunately, at the time of writing I cannot find the image of the results to my project, I suspect it lost to a disposable USB. </p>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2019/11/22/Investigation-of-Charging-and-Discharging-Capacitors/">Investigation of Charging and Discharging Capacitors</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2019-11-22T14:29:32.000Z" itemprop="datePublished">
+    2019-11-22
+  </time>
+  
+  | 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Electronics/">Electronics</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Physics/">Physics</a> }
+  </li>
+
+  <li class="meta-text">
+  { <a href="/tags/Experiment/">Experiment</a> }
+  </li>
+
+
+  </ul>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <p>Unfortunately content is missing :(</p>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
         <h1>
           <a href="/2019/10/24/Fizzbuzz-on-Arduino/">Fizzbuzz on Arduino</a>
         </h1>
-
+      
       <div class='ListMeta'>
   <time datetime="2019-10-24T11:56:00.000Z" itemprop="datePublished">
     2019-10-24
   </time>
-
+  
   | 
   <ul>
+    
+  <li class="meta-text">
+  { <a href="/tags/Electronics/">Electronics</a> }
+  </li>
 
   <li class="meta-text">
   { <a href="/tags/Arduino/">Arduino</a> }
   </li>
 
   <li class="meta-text">
-  { <a href="/tags/Electonics/">Electonics</a> }
+  { <a href="/tags/C-Programming/">C++ Programming</a> }
   </li>
 
   <li class="meta-text">
   { <a href="/tags/Microcontroller/">Microcontroller</a> }
   </li>
 
-  <li class="meta-text">
-  { <a href="/tags/C-Programming/">C++ Programming</a> }
-  </li>
-
 
   </ul>
-
-
+  
+  
 </div>
 
     </header>
     <div>
-
+      
         <h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>Inspired by Tom Scott’s YouTube Video on the <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=QPZ0pIK_wsc&list=PL5ZXG50fTM7oZBZmFhJygA2419Hsg6v8H">FizzBuzz interview question</a> for programmers, which was proposed by the <a target="_blank" rel="noopener" href="https://imranontech.com/2007/01/24/using-fizzbuzz-to-find-developers-who-grok-coding/">‘Imran on Tech’ blog</a>. For this project, I used the Arduino IDE again, using an Arduino Nano and a 10 segment LED display as a physical solution to Imran’s interview question. The project helped to consolidate my programme planning and Arduino coding skills that I learned during my EPQ.</p>
 <h3 id="The-Hardware"><a href="#The-Hardware" class="headerlink" title="The Hardware"></a>The Hardware</h3><p>As I was planning on using an Arduino for my solution to the Fizzbuzz game I needed to create a circuit to surport it. As an input it had a button, and a low pass filter for debouncing, connected to a digital pin. As an output it had an LED display connected to digital pins in parrallel. The powerrails were poweered from the power and ground pins.</p>
 <p style="text-align:center;"><img src="/images/fizzbuzz/Fizzbuzz2.jpg" alt="Arduino board" style="width: 33%; height: 33%">
@@ -128,28 +494,28 @@
   <source src="/images/fizzbuzz/Fizzbuzz.mp4" type="video/mp4">
 This browser does not support the video tag.
 </video></p>
-
+      
     </div>
 </article>
 
     </li>
-
+  
     <li>
       <article class='ListView'>
     <header class="title">
-
+      
         <h1>
           <a href="/2019/06/13/Lottery-Number-Generator-PIC16F88/">Lottery Number Generator - PIC16F88</a>
         </h1>
-
+      
       <div class='ListMeta'>
   <time datetime="2019-06-13T01:07:00.000Z" itemprop="datePublished">
     2019-06-13
   </time>
-
+  
   | 
   <ul>
-
+    
   <li class="meta-text">
   { <a href="/tags/Electronics/">Electronics</a> }
   </li>
@@ -164,189 +530,44 @@ This browser does not support the video tag.
 
 
   </ul>
-
-
+  
+  
 </div>
 
     </header>
     <div>
+      
+        <h3 id="Design-Brief"><a href="#Design-Brief" class="headerlink" title="Design Brief"></a>Design Brief</h3><p>The lottery is a part of weekly life in the UK, for many. Adults will often buy tickets hoping to win the jackpot, or simply for the fun of playing. As every number is just as likely as each other, unless you play with lucky pick numbers or personal numbers in mind, it can be hard to choose your numbers. Especially if you wish to use different numbers every week. This product shall generate numbers for the UK lottery, to pick the numbers for people.</p>
+<h3 id="Specification"><a href="#Specification" class="headerlink" title="Specification"></a>Specification</h3><p>⦁    It must run off of a 5V supply.<br>⦁    It must have a button when pressed and released generates a number.<br>⦁    The random numbers generated must be between 1 and 59.<br>⦁    Must display in alphanumeric decimal.<br>⦁    It should display 2 digits.<br>⦁    It must output a desired number 98% of the time.<br>⦁    It must generate and display the numbers in under 5 milliseconds.</p>
+<h3 id="Inputs-amp-Outputs"><a href="#Inputs-amp-Outputs" class="headerlink" title="Inputs &amp; Outputs"></a>Inputs &amp; Outputs</h3><p>Schmitt NOT Gate (40106B)<br>Pin    Connection    Pin    Connection<br>1        VDD    Connect High<br>2        13<br>3        12<br>4        11<br>5    Connection from PTM switch    10<br>6    Connection to PIC Input    9<br>GND    Connect Low    8    </p>
+<p>PIC16F88<br>Pin    Code    Connection    Pin    Code    Connection<br>1    A2        18    A1<br>2    A3        17    A0    Input (from Schmitt Inverter)<br>3    A4        16    A7<br>4    A5        15    A6<br>5    GND    Connect Low    14    VDD    Connect High<br>6    B0    Units BCD A    13    B7<br>7    B1    Units BCD A    12    B6<br>8    B2    Units BCD A    11    B5<br>9    B3    Units BCD B    10    B4    </p>
+<p>BCD Decoder Driver (4511B)<br>Pin    Connection    Pin    Connection<br>1    BCD B    VDD    Connect High<br>2    BCD C    15    Segment F<br>3    Connect Low (lamp test)    14    Segment G<br>4    Connect High (ripple blanking)    13    Segment A<br>5    Connect Low (enable/store input)    12    Segment B<br>6    BCD D    11    Segment C<br>7    BCD A    10    Segment D<br>GND    Connect Low    9    Segment E</p>
+<h3 id="Circuit-Diagram"><a href="#Circuit-Diagram" class="headerlink" title="Circuit Diagram"></a>Circuit Diagram</h3><h3 id="Flow-Chart"><a href="#Flow-Chart" class="headerlink" title="Flow Chart"></a>Flow Chart</h3><h3 id="Program"><a href="#Program" class="headerlink" title="Program"></a>Program</h3><p>A copy of program version “0700t” &amp; “0700u” attached to the post. When initially coding my project I ran into the problem of it not correctly compiling, upon inspecting my code I found all my instances of “MOVLW” to be “MOVW” this is not a recognised bit of code as it as is not specify a target byte to move to the working register. I remedied this problem by using Notepad++’s find and replace function to correct every instance of this problem.</p>
+<p>Another change I made whilst writing my code was to the display section. When I first wrote it I used “BTFSC” and “BSF” commands to transfer the information from the clock register to PORTB. I then found out you can write to PORTB in the same way as any other directory. This allowed me to simplify a section of clumsy and repetitive code to a simpler and  much more elegant solution.  My new code used “MOVF” and “MOVWF” to simply transfer the data in the clock register to the output register of PORTB.</p>
+<h3 id="Evidence-of-Building"><a href="#Evidence-of-Building" class="headerlink" title="Evidence of Building"></a>Evidence of Building</h3><p>I started the building of my circuit by placing all the parts that I thought would go over the trench, this allows me to set up an efficient placement for wiring, this is particularly evident in that the “units” BCD decoder driver is underneath the the dual seven segment display so that output C directly lines up with its pin on the display. </p>
+<p>I then proceeded to wire the chips, inputs and outputs together. All the wires connecting to positive and negative pins with red and black wire respectively. I used green wire for all the data on the breadboard. I started with the switches to the PIC, then the PIC to the BCD decoder drivers, and finally the BCD decoder drivers to the dual seven segment display.</p>
+<p>Whilst testing the circuit I added a Schmitt NOT gate, this is why it is not connected particularly neatly. I used the Schmitt NOT gate to debounce the button input  to the PIC, this was done in an attempt to fix one of the bugs found. Although it was unsuccessful at fixing the bug I kept it in the circuit as I feel it will help the stability of my program.</p>
+<h3 id="Evidence-of-Testing"><a href="#Evidence-of-Testing" class="headerlink" title="Evidence of Testing"></a>Evidence of Testing</h3><p>I first tested my program to make sure that the code was working as desired. I did this by using the integrated testing systems on the PIC loading board. By using the buttons and LEDs I could see if any incorrect BCD signals were being sent. I did not find any numbers on either chips that were outside the desired range.</p>
+<p>To make sure that the lottery number generator worked I connected the breadboards to 5V and 0V. This showed that it was working as intended. After testing a few random numbers I concluded that there was an error in the wiring of the display. After looking back over the pinout information I found and corrected the error. This meant that all the device was working as intended.</p>
+<h3 id="Photo-of-Working-circuit"><a href="#Photo-of-Working-circuit" class="headerlink" title="Photo of Working circuit"></a>Photo of Working circuit</h3><p>Finally I neatened the connections on the board, making everything sit flush on breadboard whilst making sure it all stays working. This makes circuit easier to follow and reduces any stray capacitance in the circuit.</p>
+<p>⦁    Testing against specification<br>⦁    It must run off of a 5V supply.<br>⦁    Both the testing board and the final circuit ran off of a 5V supply. I specifically chose 4511s as my BCD decoder driver as they are designed to run off of 5V. The only change I made was adding a capacitor over the power rails as this smoothed any fluctuations in the supply voltage, this was needed as the PIC was especially finicky with its input voltages.<br>⦁    It must have a button when pressed and released generates a number.<br>⦁    The sole input for the device is a button, this needs to be pressed and released for a new number to be generated. This feature was especially coded into my project. Once the button had been pressed the PIC would be stuck in a looping of code until it was released again.</p>
+<p>⦁    The random numbers generated must be between 1 and 59.<br>⦁    The numbers generated are between the values 0 and 59. This includes every number that it is supposed to have but has a very small chance of displaying zero. I have literally met the needs of the specification. However, I feel that it is implicit that it doesn’t want any numbers but these, so I am not particularly happy about this<br>⦁    Must display in alphanumeric decimal.<br>⦁    I have used two BCD decoder drivers and a dual seven segment display to turn the output of the output to the PIC into a way that can easily be understood visually.<br>⦁    It should display 2 digits.<br>⦁    By using a dual seven segment display I have limited myself into only being able to display 2 digits, meeting the specification.<br>⦁    It must output a desired number 98% of the time.<br>⦁    To test to see if it was generating a desired number a sufficient amount of the time, I used my generator 200 times and recorded the frequency of every number generated. The number 0 was generated twice giving it a 1% chance of being generated. I see no significant evidence to say that 0 has a different probability of being generated. Giving it a 1.7% chance. This means it generates a desired number 98.3% of the time, meeting the specification.<br>⦁    It must generate and display the numbers in under 5 milliseconds.<br>⦁    The clock speed of the PIC16F88 is 38 KHz. Between the button being released and the clock moving to the output register there is a maximum of 7 lines of code. This means the maximum delay is 0.74 ms, well below the specified 5 ms.</p>
+<h3 id="Evaluation"><a href="#Evaluation" class="headerlink" title="Evaluation"></a>Evaluation</h3><p>During this project, I have learnt a great deal about assembly code and microcontrollers in general. This has been a particularly interesting project as I have had no prior experience with these systems, and would be interested to see what I can do with them in the future. If I were to do another project with them I would try using a larger number of Inputs as I feel that processing this information would play to the advantage of micro-controlled systems more than conventional circuits.</p>
+<p>I have noticed that my generator also generates the number 00 as well as 01-59. It is my belief that this error is to do with the code. I feel that with an alternative approach to the code that this problem can be remedied. This is likely to need a complete overhaul of the code, but I would say that this is definitely worth it. This would improve the percentage of desired outputs drastically, this would more wholefully meet the specification.</p>
+<p>To improve the design of this project, I would reduce the number of PICs to one. This would make a much more efficient design as it is much less wasteful. This would likely make removing 00 as an output easier as it would mean that the two PICs would not have to communicate. If this was made as a commercial project this would drastically reduce the overall cost of the circuit, as PICs are expensive. </p>
+<p>Overall I would say that this circuit was effective as it met every part of the specification. However, I would also call it inefficient as it was wasteful in its resources and the end result was underwhelming. Although I am pleased that I underwent this project I am not displeased with the result. I feel that I may have started this over ambitious and I have definitely learnt a lesson in setting realistic goals.</p>
 
-        <p>Unfortunately content is missing :(</p>
-
-
+      
     </div>
 </article>
 
     </li>
-
-    <li>
-      <article class='ListView'>
-    <header class="title">
-
-        <h1>
-          <a href="/2019/05/21/Skip-Light-Design-Project/">Skip Light Design Project</a>
-        </h1>
-
-      <div class='ListMeta'>
-  <time datetime="2019-05-21T11:34:00.000Z" itemprop="datePublished">
-    2019-05-21
-  </time>
-
-  | 
-  <ul>
-
-  <li class="meta-text">
-  { <a href="/tags/Electronics/">Electronics</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/Subsystem-Design/">Subsystem Design</a> }
-  </li>
-
-
-  </ul>
-
-
-</div>
-
-    </header>
-    <div>
-
-        <h3 id="Design-Brief"><a href="#Design-Brief" class="headerlink" title="Design Brief"></a>Design Brief</h3><p>You own a skip hire company. People keep hitting your skips at night in their cars and causing damage. You need an electronic device that will warn motorists at night of the presence of the skip.</p>
-<h3 id="Specification"><a href="#Specification" class="headerlink" title="Specification"></a>Specification</h3><p>●    The device should flash a light at night to warn motorists of the presence of the skip.<br>●    The light must only flash in the dark to save power.<br>●    The light must flash at a frequency of 5Hz ± 10%.<br>●    The light must run off a 9V battery.<br>●    The light must be bright enough to be visible from 25 m away.</p>
-<h3 id="Subsystem-Blocks"><a href="#Subsystem-Blocks" class="headerlink" title="Subsystem Blocks"></a>Subsystem Blocks</h3><p style="text-align:center;"><img src="/images/skip-light/skip_light_block_diagram.png" alt="Block diagram" style="width: 75%; height: 75%">
-
-</p><h4 id="Subsystem-1"><a href="#Subsystem-1" class="headerlink" title="Subsystem (1):"></a>Subsystem (1):</h4><p>I will use a potential divider with a LDR to measure a change in the light level, this will tell the circuit it is dark. I used a potentiometer in the circuit to allow me to dial in the resistance so that the output voltages for light and dark are above and below the switching threshold. Finally the  schmitt not gate is in this system to give exact logic levels with no flickering, this is caused by the gates hysteresis effect.</p>
-<p style="text-align:center;"><img src="/images/skip-light/skip_light_subsystem_1.png" alt="Subsystem 1" style="width: 33%; height: 33%">
-
-</p><h4 id="Subsystem-2"><a href="#Subsystem-2" class="headerlink" title="Subsystem (2):"></a>Subsystem (2):</h4><p>I will use a schmitt not gate astable to create a 5Hz pulse for the skip light. The use of a schmitt not gate astable instead of a 555 astable because I was already using a schmitt not gate in my design.</p>
-<p style="text-align:center;"><img src="/images/skip-light/skip_light_subsystem_2.png" alt="Subsystem 2" style="width: 33%; height: 33%">
-
-</p><h4 id="Subsystem-3"><a href="#Subsystem-3" class="headerlink" title="Subsystem (3):"></a>Subsystem (3):</h4><p>For this part of the circuit I intend to just use an and gate as this very effectively combines the light sensors logic level and the astable, so that it outputs 5Hz when it is dark.</p>
-<p style="text-align:center;"><img src="/images/skip-light/skip_light_subsystem_3.png" alt="Subsystem 3" style="width: 33%; height: 33%">
-
-</p><h4 id="Subsystem-4"><a href="#Subsystem-4" class="headerlink" title="Subsystem (4):"></a>Subsystem (4):</h4><p>To drive the LED I will use a N-channel MOSFET. This will allow me to drive the LED at higher currents than the and gate will be able to output. This is necessary as the LED I intend to use will be a very powerful one, requiring more current. I have decided on a MOSFET instead of a NPN transistor as it will allow me to drive the LED with negligible current from the and gate. In addition the MOSFETs much faster switching speed will help maintain the clear square wave of the astable.</p>
-<p style="text-align:center;"><img src="/images/skip-light/skip_light_subsystem_4.png" alt="Subsystem 4" style="width: 33%; height: 33%">
-
-</p><h4 id="Subsystem-5"><a href="#Subsystem-5" class="headerlink" title="Subsystem (5):"></a>Subsystem (5):</h4><p>To provide the output for this system I am going to use a super bright LED. I have calculated the protection resistor needed to be about 910Ω I have tested the two nearest resistor values and found that both will work continuously. I have decided to use the smaller value as </p><p style="text-align:center;"><img src="/images/skip-light/skip_light_subsystem_5.png" alt="Subsystem 5" style="width: 33%; height: 33%"></p>
-<h3 id="Circuit-Diagram"><a href="#Circuit-Diagram" class="headerlink" title="Circuit Diagram:"></a>Circuit Diagram:</h3><p style="text-align:center;"><img src="/images/skip-light/skip_light_circuit_diagram_1.png" alt="Circuit diagram" style="width: 75%; height: 75%">
-
-</p><p>For the final circuit diagram I combined all of the different subsystems I had built into one design. Once I did this I noticed that I could condense the design down further into one chip instead of two, using nand gate simplification. To keep the hysteresis quality of the schmitt not gate I used a schmitt nand gate instead of a normal one. This meant each subsystem works the same but using the same chip.</p>
-<p style="text-align:center;"><img src="/images/skip-light/skip_light_circuit_diagram_2.png" alt="NAND simplification" style="width: 75%; height: 75%">
-
-</p><h3 id="Photo-of-Working-circuit"><a href="#Photo-of-Working-circuit" class="headerlink" title="Photo of Working circuit:"></a>Photo of Working circuit:</h3><p>Once built I needed to get my circuit working. To get it working, I had to do two things. First I had to find the right resistance for the potentiometre. This was so it outputted above and below the threshold voltage of the schmitt nand gate I used. To do this I used a multimeter and measured the output voltage. I found that a resistance of about 2.5KΩ was a very effective value. Secondly, I found that my LED was always dimly on. I found that the problem was my MOSFET was leaking current. To fix this I replaced the model of my MOSFET.<br><img src="/images/skip-light/skip_light_working_1.png" alt="Finished circuit" style="width: 50%; height: 50%"><img src="/images/skip-light/skip_light_working_2.png" alt="Light flashing" style="width: 50%; height: 50%"></p>
-<h3 id="Testing-against-specification"><a href="#Testing-against-specification" class="headerlink" title="Testing against specification"></a>Testing against specification</h3><p>●    The device should flash a light at night to warn motorists of the presence of the skip - My system flashes a light when it is dark.<br>●    The light must only flash in the dark to save power - My system uses a LDR to flash a light only when it is dark.<br>●    The light must flash at a frequency of 5Hz ± 10% - My system uses an astable that flashes at 5.23Hz, within the 10% tolerance.<br><img src="/images/skip-light/SL3.BMP" alt="DSO display" style="width: 50%; height: 50%"><br>●    The light must run off a 9V battery - The light runs off of a 9V power supply, meaning it could be run from a PP3 battery. However, the power consumption so it couldn’t last long.<br>●    The light must be bright enough to be visible from 25 m away - The light I used was the brightest light I had available to me, it was brighter than the lamp that I initially tested, suggesting it reaches this criteria. If it does not I don’t have any way to improve it, unfortunately.</p>
-<h3 id="Evaluation"><a href="#Evaluation" class="headerlink" title="Evaluation"></a>Evaluation</h3><p>During this project, I have been efficient with my time, making and testing circuit especially quickly, I feel this is partly due to the efficient design, that I came up with. I feel that during this project my evidence gathering has been quite week, in future projects I should remember to gather more evidence, whilst doing it.</p>
-<p>I have noticed that the LED can occasionally interfere with the light sensing subsystem. To remedy this when designing a case for the product the LED and LDR should be facing away from each other. Another issue that this design requires a lot of power, and so will not last long on a PP3 9V battery, to improve this you could use multiple in parallel or a LiPo instead, I feel the design can’t be made more power efficient as this power is mostly used to light the LED. </p>
-<p>To improve the design of this project, I would look at reducing the number of gates used even further. Even though the number of chips would not be changed, it may be possible to get it down to a smaller chip size. I would use a potentiometer in the astable system, as I found the calculated value for frequency was off of the actual and this would allow you to tune it to frequency you want. For more improvements I may consider, allowing the user to adjust the on/off time, this would especially help with the battery life.</p>
-<p>The system that I designed was small enough to fit on half a board and only used one chip. I would say this is highly efficient and as it met the specification also very successful. I am happy that the wiring is both neat and reliable, enough to be used effectively as a demonstrative piece.</p>
-
-
-    </div>
-</article>
-
-    </li>
-
-    <li>
-      <article class='ListView'>
-    <header class="title">
-
-        <h1>
-          <a href="/2018/05/31/Rotating-Promotional-Display/">Rotating Promotional Display</a>
-        </h1>
-
-      <div class='ListMeta'>
-  <time datetime="2018-05-31T19:46:00.000Z" itemprop="datePublished">
-    2018-05-31
-  </time>
-
-  | 
-  <ul>
-
-  <li class="meta-text">
-  { <a href="/tags/3D-Design/">3D Design</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/Electronics/">Electronics</a> }
-  </li>
-
-  <li class="meta-text">
-  { <a href="/tags/PCB-Design/">PCB Design</a> }
-  </li>
-
-
-  </ul>
-
-
-</div>
-
-    </header>
-    <div>
-
-        <h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>For my GCSE Electronic Products coursework, I had to design and make a userful electronic product that could be sold commercially. For my project decided to create a rotating promotional display, similar to something that might be used in a shop window. </p>
-<h3 id="The-Project"><a href="#The-Project" class="headerlink" title="The Project"></a>The Project</h3><object data="https://butty-builds.me/pdfs/Rotating%20Promotional%20Display.pdf" type="application/pdf" width="100%" height="700px">
-<! -- Waylan & amc @ https://stackoverflow.com/questions/39777166/display-pdf-image-in-markdown -->
-    <embed src="https://butty-builds.me/pdfs/Rotating%20Promotional%20Display.pdf">
-        <p>This browser does not support PDFs. Please download the PDF to view it: <a target="_blank" rel="noopener" href="https://butty-builds.me/pdfs/Rotating%20Promotional%20Display.pdf">Download PDF</a>.</p>
-
-</object>
-
-    </div>
-</article>
-
-    </li>
-
-    <li>
-      <article class='ListView'>
-    <header class="title">
-
-        <h1>
-          <a href="/2018/05/08/Art-Deco-Speaker-Case/">Art Deco Speaker Case</a>
-        </h1>
-
-      <div class='ListMeta'>
-  <time datetime="2018-05-08T13:05:00.000Z" itemprop="datePublished">
-    2018-05-08
-  </time>
-
-  | 
-  <ul>
-
-  <li class="meta-text">
-  { <a href="/tags/3D-Design/">3D Design</a> }
-  </li>
-
-
-  </ul>
-
-
-</div>
-
-    </header>
-    <div>
-
-        <h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>For my GCSE Resistant Materials coursework, I had to create a useful daily object in a specific design style. I decided to create an Arto Deco bluetooth speaker. This project went from creating a concept, designing it, and finally using physical processes to make it.</p>
-<h3 id="The-Project"><a href="#The-Project" class="headerlink" title="The Project"></a>The Project</h3><object data="https://butty-builds.me/pdfs/Art%20Deco%20Speaker.pdf" type="application/pdf" width="100%" height="700px">
-<! -- Waylan & amc @ https://stackoverflow.com/questions/39777166/display-pdf-image-in-markdown -->
-    <embed src="https://butty-builds.me/pdfs/Art%20Deco%20Speaker.pdf">
-        <p>This browser does not support PDFs. Please download the PDF to view it: <a target="_blank" rel="noopener" href="https://butty-builds.me/pdfs/Art%20Deco%20Speaker.pdf">Download PDF</a>.</p>
-
-</object>
-
-<p><em>Yes, it does look like a church.</em></p>
-
-
-    </div>
-</article>
-
-    </li>
-
+  
 </ul>
 
   <section id="nav-wrapper">
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">« prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/">« prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">next »</a>
     </nav>
   </section>
 
